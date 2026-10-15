@@ -7,12 +7,26 @@ Loot Drop is an independent brand for people building with AI: vibe coders, AI-a
 ## Products
 
 - [The Drop](https://lootdrop.tools/#join): Free weekly email digest of AI tools, with S/A/B/C tier-list rankings by use case (vibe coding, AI agents, game-dev tools), new releases with a one-line take, and one "try this" tip each week.
-- [The Armory](https://lootdrop.tools/#loot): Agent templates and prompt packs (app starter kits, research agents, Discord bots), each tested from a clean start and shipped with plain-English setup docs. Coming soon; waitlist open.
-- [Respawn](https://lootdrop.tools/#respawn): Vibe-code rescue service. Fixes broken AI-built apps made with Cursor, Lovable, Bolt, Replit, v0, and similar tools: deploy failures, looping bugs, broken auth. You get a quote and time estimate before work starts, and the fix arrives as a pull request with a plain-English write-up.
+- [The Armory](https://lootdrop.tools/armory/): Agent templates and prompt packs (app starter kits, research agents, Discord bots), each tested from a clean start and shipped with plain-English setup docs. Paid packs coming soon (planned: Ship-It Loadout $19, Agent Builder Pack $29); waitlist open. A free Starter Loadout is available now.
+- [Respawn](https://lootdrop.tools/respawn/): Vibe-code rescue service. Fixes broken AI-built apps made with Cursor, Lovable, Bolt, Replit, v0, and similar tools: deploy failures, looping bugs, broken auth. You get a quote and time estimate before work starts, and the fix arrives as a pull request with a plain-English write-up. Starting prices: Quick Fix from $49, Full Rescue from $249. No charge before you accept a quote; no fix, no fee.
+
+## Issues and free resources
+
+- [The Drop #1: The coding-agent tier list (paper edition)](https://lootdrop.tools/drop/001/): Provisional S-to-C tiers for Claude Code, OpenAI Codex, Cursor, GitHub Copilot, Lovable, Bolt.new, Replit Agent, Google Antigravity, v0, Devin Desktop and Gemini CLI, built from public pricing checked Oct 15, 2026. Hands-on tests start in Drop #2.
+- [Starter Loadout](https://lootdrop.tools/armory/starter-loadout/): Free AGENTS.md project template for vibe-coded apps, plus CLAUDE.md and Cursor rule pointer files. Download: https://lootdrop.tools/armory/starter-loadout.zip
+- [Starter Loadout prompts](https://lootdrop.tools/armory/starter-loadout/prompts/): 8 copy-paste prompts for coding agents: reproduce-then-fix, error log triage, loop breaker, deploy failure fix, safe refactor, characterization tests, pre-ship security review, session save.
+- [Pre-deploy checklist](https://lootdrop.tools/armory/starter-loadout/checklist/): Launch checklist for AI-built apps covering secrets, auth, paid-API limits, hosting and basics.
 
 ## How we rank
 
 - [Ranking method](https://lootdrop.tools/#rank): Each tool in a category runs the same real task. Results are dated, and old grades stay visible after re-tests. S = best in class for that use case, A = strong pick, B = situational, C = skip unless you have a specific reason.
+
+## Policies
+
+- [Terms of service](https://lootdrop.tools/terms/): Loot Drop is the seller; Lemon Squeezy is the merchant of record for all orders.
+- [Privacy policy](https://lootdrop.tools/privacy/): What data is collected and which services process it.
+- [Refund policy](https://lootdrop.tools/refunds/): 14-day refunds on paid Armory packs; no-fix-no-fee on Respawn.
+- Contact: thedrop@mail.grokbot.com
 
 ## Optional
 

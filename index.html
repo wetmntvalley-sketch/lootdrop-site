@@ -34,9 +34,9 @@
       "logo": "https://lootdrop.tools/favicon.svg",
       "sameAs": ["https://x.com/lootdrop", "https://youtube.com/@lootdrop"],
       "makesOffer": [
-        {"@type": "Offer", "price": "0", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "The Drop", "description": "Free weekly AI-tools digest with S/A/B/C tier-list rankings, tested by use case."}},
-        {"@type": "Offer", "availability": "https://schema.org/PreOrder", "itemOffered": {"@type": "Product", "name": "The Armory", "description": "Agent templates and prompt packs, tested from a clean start. Coming soon."}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Respawn", "description": "Vibe-code rescue: fixes for broken AI-built apps from Cursor, Lovable, Bolt, Replit, and v0, delivered as a pull request with a plain-English write-up."}}
+        {"@type": "Offer", "price": "0", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "The Drop", "url": "https://lootdrop.tools/drop/001/", "description": "Free weekly AI-tools digest with S/A/B/C tier-list rankings, tested by use case."}},
+        {"@type": "Offer", "availability": "https://schema.org/PreOrder", "itemOffered": {"@type": "Product", "name": "The Armory", "url": "https://lootdrop.tools/armory/", "description": "Agent templates and prompt packs, tested from a clean start. Coming soon."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Respawn", "url": "https://lootdrop.tools/respawn/", "description": "Vibe-code rescue: fixes for broken AI-built apps from Cursor, Lovable, Bolt, Replit, and v0, delivered as a pull request with a plain-English write-up."}}
       ]
     },
     {
@@ -79,7 +79,13 @@
   .nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
   .nav ul a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
   .nav ul a:hover{color:var(--text)}
-  @media (max-width:640px){.nav ul{display:none}}
+  @media (max-width:640px){
+    .nav .wrap{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:8px;row-gap:6px}
+    .nav nav{width:100%;min-width:0}
+    .nav ul{width:100%;gap:16px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+    .nav ul::-webkit-scrollbar{display:none}
+    .nav ul a{white-space:nowrap;font-size:.9rem}
+  }
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:10px;border:0;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
   .btn-primary{background:linear-gradient(135deg,var(--legendary),#ff5f1f);color:#140a00;box-shadow:0 6px 24px -6px rgba(255,138,31,.6)}
   .btn-primary:hover{transform:translateY(-1px);color:#140a00;box-shadow:0 10px 30px -6px rgba(255,138,31,.75)}
@@ -175,9 +181,10 @@
     <a class="brand" href="#top" aria-label="Loot Drop home"><svg aria-hidden="true"><use href="#chest"/></svg>Loot Drop</a>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="#loot">The Loot</a></li>
+        <li><a href="/drop/001/">The Drop #1</a></li>
+        <li><a href="/armory/">Armory</a></li>
+        <li><a href="/respawn/">Respawn</a></li>
         <li><a href="#rank">How we rank</a></li>
-        <li><a href="#respawn">Respawn</a></li>
         <li><a href="#join">Join The Drop</a></li>
       </ul>
     </nav>
@@ -217,6 +224,7 @@
             <li>New releases with a one-line take</li>
             <li>One "try this" tip every week</li>
           </ul>
+          <p><a href="/drop/001/">Read The Drop #1: the coding-agent tier list</a></p>
           <a class="btn btn-primary cta" href="#join">Get The Drop</a>
         </article>
         <article class="card epic">
@@ -229,6 +237,7 @@
             <li>Tested from scratch before release</li>
             <li>Plain-English setup docs</li>
           </ul>
+          <p><a href="/armory/starter-loadout/">Free now: the Starter Loadout</a> · <a href="/armory/">See the Armory</a></p>
           <form class="inline-form cta js-signup" data-list="armory" action="https://app.kit.com/forms/YOUR_KIT_FORM_ID/subscriptions" method="post">
             <label class="sr-only" for="armory-email">Email for Armory launch</label>
             <input id="armory-email" type="email" name="email_address" placeholder="you@example.com" required autocomplete="email">
@@ -246,6 +255,7 @@
             <li>Deploy failures, looping bugs, broken auth</li>
             <li>Fix delivered as a pull request with a write-up</li>
           </ul>
+          <p>Flat fees, quoted up front: Quick Fix from $49, Full Rescue from $249. <a href="/respawn/">How Respawn works</a></p>
           <a class="btn btn-ghost cta" href="#respawn">Request a respawn</a>
         </article>
       </div>
@@ -354,8 +364,21 @@
     <div>
       <a class="brand" href="#top"><svg aria-hidden="true" style="width:26px;height:26px"><use href="#chest"/></svg>Loot Drop</a>
       <p class="disclosure">Some links on Loot Drop are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Affiliate deals and sponsorships never affect our rankings.</p>
+      <p>Paid products are sold through Lemon Squeezy, our merchant of record. Contact: <a href="mailto:thedrop@mail.grokbot.com">thedrop@mail.grokbot.com</a></p>
       <p>© <span id="yr">2026</span> Loot Drop</p>
     </div>
+    <nav aria-label="Site" style="max-width:420px">
+      <ul style="gap:10px 16px">
+        <li><a href="/drop/001/">The Drop #1</a></li>
+        <li><a href="/armory/">The Armory</a></li>
+        <li><a href="/armory/starter-loadout/">Free Starter Loadout</a></li>
+        <li><a href="/respawn/">Respawn</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/refunds/">Refund policy</a></li>
+        <li><a href="mailto:thedrop@mail.grokbot.com">Contact</a></li>
+      </ul>
+    </nav>
     <nav aria-label="Social">
       <ul>
         <li><a href="https://x.com/lootdrop" rel="noopener">X @lootdrop</a></li>

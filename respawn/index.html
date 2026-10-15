@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Respawn: fixes for broken AI-built apps | Loot Drop</title>
+<meta name="description" content="Vibe-code rescue for apps built with Cursor, Lovable, Bolt, Replit, v0 and other AI tools. Free quote before any work, flat-fee fixes from $49, delivered as a pull request with a plain-English write-up.">
+<meta name="theme-color" content="#0b0b12">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lootdrop.tools/respawn/">
+<meta property="og:title" content="Respawn: fixes for broken AI-built apps | Loot Drop">
+<meta property="og:description" content="Vibe-code rescue for apps built with Cursor, Lovable, Bolt, Replit, v0 and other AI tools. Free quote before any work, flat-fee fixes from $49, delivered as a pull request with a plain-English write-up.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lootdrop.tools/respawn/">
+<meta property="og:site_name" content="Loot Drop">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@lootdrop">
+<meta name="twitter:title" content="Respawn: fixes for broken AI-built apps | Loot Drop">
+<meta name="twitter:description" content="Vibe-code rescue for apps built with Cursor, Lovable, Bolt, Replit, v0 and other AI tools. Free quote before any work, flat-fee fixes from $49, delivered as a pull request with a plain-English write-up.">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='26' width='52' height='30' rx='4' fill='%23ff8a1f'/%3E%3Cpath d='M6 30c0-12 10-20 26-20s26 8 26 20z' fill='%23a855f7'/%3E%3Crect x='26' y='24' width='12' height='14' rx='2' fill='%230b0b12'/%3E%3Ccircle cx='32' cy='31' r='3' fill='%23ffd166'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Respawn",
+  "serviceType": "Software bug fixing for AI-built apps",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://lootdrop.tools/#org",
+    "name": "Loot Drop",
+    "url": "https://lootdrop.tools/"
+  },
+  "url": "https://lootdrop.tools/respawn/",
+  "description": "Vibe-code rescue for apps built with Cursor, Lovable, Bolt, Replit, v0 and other AI tools. Free quote before any work, flat-fee fixes from $49, delivered as a pull request with a plain-English write-up.",
+  "areaServed": "Worldwide",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Quick Fix",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 49,
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Full Rescue",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 249,
+        "priceCurrency": "USD"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ld-chest-lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="ld-chest-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa646"/><stop offset="1" stop-color="#e86a0c"/></linearGradient>
+    <symbol id="chest" viewBox="0 0 64 64">
+      <rect x="6" y="28" width="52" height="28" rx="4" fill="url(#ld-chest-box)"/>
+      <path d="M6 32c0-13 10-21 26-21s26 8 26 21z" fill="url(#ld-chest-lid)"/>
+      <rect x="6" y="30" width="52" height="4" fill="#0b0b12" opacity=".35"/>
+      <rect x="27" y="26" width="10" height="13" rx="2" fill="#0b0b12"/>
+      <circle cx="32" cy="32" r="2.6" fill="#ffd166"/>
+      <path d="M14 8l2 4 4 2-4 2-2 4-2-4-4-2 4-2zM50 4l1.5 3 3 1.5-3 1.5L50 13l-1.5-3-3-1.5 3-1.5z" fill="#ffd166"/>
+    </symbol>
+  </defs>
+</svg>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Loot Drop home"><svg aria-hidden="true"><use href="#chest"/></svg>Loot Drop</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="/drop/001/">The Drop #1</a></li>
+        <li><a href="/armory/">Armory</a></li>
+        <li><a href="/respawn/" aria-current="page">Respawn</a></li>
+        <li><a href="/#join">Join The Drop</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Respawn</span></nav>
+      <span class="eyebrow">Rare · Rescue service</span>
+      <h1><span class="grad">Respawn</span></h1>
+      <p class="tagline">Your build died? We'll respawn it. Flat-fee fixes for broken AI-built apps, quoted up front, and a human checks every fix.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#request">Get a free quote</a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+    </div>
+  </section>
+  <section class="tight" id="fixes">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we fix</h2>
+        <p>Cursor, Lovable, Bolt, Replit or v0 got you 80% of the way, and the last 20% keeps crashing. These are the boss fights we take on.</p>
+      </div>
+      <div class="fix-grid">
+        <div><h3>Deploy failures</h3><p>Works locally, fails on Vercel, Netlify, Cloudflare, Railway or Render. Blank pages after deploy.</p></div>
+        <div><h3>Broken auth</h3><p>Login loops, signups that never confirm, sessions that vanish, redirect errors.</p></div>
+        <div><h3>Looping bugs</h3><p>The bug your agent has "fixed" five times. We reproduce it, find the real cause, and fix it once.</p></div>
+        <div><h3>Database and data</h3><p>Supabase or Firebase errors, access rules blocking (or exposing) data, failed migrations.</p></div>
+        <div><h3>Payments and webhooks</h3><p>Checkouts that don't complete, webhooks that never arrive, test mode stuck on in production.</p></div>
+        <div><h3>Pre-launch check</h3><p>Leaked keys, open API routes, and paid AI endpoints anyone can call, found before strangers find them.</p></div>
+      </div>
+      <p class="fine" style="text-align:center;margin-top:24px">Not a fit: full rebuilds from scratch, brand-new features, or anything illegal or meant to harm others. We'll say so up front instead of quoting.</p>
+    </div>
+  </section>
+  <section class="tight" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>You know the price before any work starts, and nothing is charged until you accept the quote.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Submit</h3><p>Tell us what broke with the form below: a link, the tool that built it, and the error.</p></li>
+        <li><h3>Diagnose</h3><p>We reproduce the problem and find the cause. Free, and no repo access needed if the app is public.</p></li>
+        <li><h3>Quote</h3><p>A flat fee and a time estimate by email. Accept it and pay through our secure checkout, or walk away for free.</p></li>
+        <li><h3>Fix</h3><p>We fix the cause on a separate branch with limited repo access, then a human re-tests every fix.</p></li>
+        <li><h3>Handoff</h3><p>You get a pull request plus a plain-English write-up: what broke, why, and how to keep it fixed.</p></li>
+      </ol>
+    </div>
+  </section>
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Pricing</h2>
+        <p>Starting prices. Your exact flat fee comes in the quote, before any work starts. Prices in USD.</p>
+      </div>
+      <div class="cards two">
+        <article class="card rare">
+          <div class="rarity">Quick fix</div>
+          <h3>Quick Fix</h3>
+          <p class="price">from $49</p>
+          <p class="lead">One bug, one clear symptom.</p>
+          <ul>
+            <li>A single bug or deploy error with a clear reproduction</li>
+            <li>Fix delivered as a pull request with a short write-up</li>
+            <li>Typical turnaround: 1 to 2 business days after you accept the quote</li>
+            <li>7-day guarantee: if the same issue comes back, we fix it again free</li>
+          </ul>
+          <a class="btn btn-ghost cta" href="#request">Request a quick fix</a>
+        </article>
+        <article class="card legendary">
+          <div class="rarity">Full rescue</div>
+          <h3>Full Rescue</h3>
+          <p class="price">from $249</p>
+          <p class="lead">The app is stuck and several things are broken.</p>
+          <ul>
+            <li>Several related bugs, or a broken auth, data or deploy setup</li>
+            <li>Pre-launch security and sanity review included</li>
+            <li>Fixes delivered as pull requests with a full write-up and an AGENTS.md for your repo</li>
+            <li>Typical turnaround: 3 to 7 business days, confirmed in the quote</li>
+            <li>14-day guarantee on the issues in the quote</li>
+          </ul>
+          <a class="btn btn-primary cta" href="#request">Request a full rescue</a>
+        </article>
+      </div>
+      <p class="fine" style="text-align:center;margin-top:20px">Payments are processed by Lemon Squeezy, our merchant of record. Founding slots from The Drop #1 get priority in the queue.</p>
+    </div>
+  </section>
+  <section class="tight" id="refunds">
+    <div class="wrap prose">
+      <h2>Refund policy for Respawn</h2>
+      <ul>
+        <li><strong>No fix, no fee.</strong> If we can't fix the issue described in your quote, you get a full refund.</li>
+        <li><strong>Guarantee window.</strong> If the quoted issue comes back within the guarantee window (7 days for Quick Fix, 14 days for Full Rescue), we fix it again for free. If we can't, you get a full refund.</li>
+        <li><strong>Before work starts.</strong> Cancel any time before we start the fix for a full refund.</li>
+        <li><strong>Not covered:</strong> new issues outside the quote, or problems caused by later changes to the code. We'll quote those separately.</li>
+        <li><strong>How to ask:</strong> email <a href="mailto:thedrop@mail.grokbot.com">thedrop@mail.grokbot.com</a> with your order number. Approved refunds go back to your original payment method through Lemon Squeezy.</li>
+      </ul>
+      <p>Full details are in our <a href="/refunds/">refund policy</a> and <a href="/terms/#respawn">terms</a>.</p>
+      <h2>Common questions</h2>
+      <h3>Do you need my passwords or API keys?</h3>
+      <p>No. Never paste secrets into the form. If you accept the quote, we'll ask for limited, revocable access, such as a GitHub collaborator invite on the one repo. You can remove it right after handoff.</p>
+      <h3>Who owns the code?</h3>
+      <p>You do, including every fix we write. We don't reuse your code or share it with anyone.</p>
+      <h3>Which tools do you support?</h3>
+      <p>Apps built with Cursor, Claude Code, Codex, Lovable, Bolt, Replit, v0, Copilot and similar tools, mostly JavaScript/TypeScript (React, Next.js, Vite) and Python, on common hosts and backends like Vercel, Netlify, Cloudflare, Supabase and Firebase. Not sure? Ask in the form.</p>
+    </div>
+  </section>
+  <section id="request">
+    <div class="wrap">
+      <div class="panel">
+        <div class="section-head" style="margin-bottom:24px">
+          <h2>Request a Respawn</h2>
+          <p>Tell us what broke. We'll reply with a quote and a time estimate before any work starts. Don't paste API keys or passwords here.</p>
+        </div>
+        <!-- Formspree: action="https://formspree.io/f/<FORM_ID>". -->
+        <form id="respawn-form" class="js-intake" name="respawn" method="post" action="https://formspree.io/f/YOUR_FORM_ID" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="respawn">
+          <input type="hidden" name="source" value="respawn-page">
+          <p class="hp"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="grid-2">
+            <div class="field">
+              <label for="r-name">Name or handle</label>
+              <input id="r-name" name="name" required autocomplete="nickname" placeholder="e.g. pixelwizard">
+            </div>
+            <div class="field">
+              <label for="r-email">Email</label>
+              <input id="r-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="field">
+            <label for="r-link">Repo or app link <span class="hint">(GitHub repo, deployed URL, or project share link)</span></label>
+            <input id="r-link" name="repo_or_app_link" type="url" required placeholder="https://github.com/you/your-app">
+          </div>
+          <fieldset>
+            <legend>What tool built it?</legend>
+            <div class="radios">
+              <label><input type="radio" name="built_with" value="Cursor" required> Cursor</label>
+              <label><input type="radio" name="built_with" value="Lovable"> Lovable</label>
+              <label><input type="radio" name="built_with" value="Bolt"> Bolt</label>
+              <label><input type="radio" name="built_with" value="Replit"> Replit</label>
+              <label><input type="radio" name="built_with" value="v0"> v0</label>
+              <label><input type="radio" name="built_with" value="Other"> Other</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="r-broken">What's broken? <span class="hint">(What you expected, what happens instead, any error messages)</span></label>
+            <textarea id="r-broken" name="whats_broken" required placeholder="Deploys fine locally, but Vercel build fails with…"></textarea>
+          </div>
+          <div class="field">
+            <label for="r-urgency">Urgency</label>
+            <select id="r-urgency" name="urgency" required>
+              <option value="">Choose one…</option>
+              <option value="whenever">Whenever: side quest</option>
+              <option value="this-week">This week</option>
+              <option value="asap">ASAP: boss fight tomorrow</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">Send it. Respawn my build.</button>
+          <p class="form-msg" role="status" aria-live="polite"></p>
+          <p class="fine">We'll ask for repo access with limited permissions only if you accept the quote. We never store your secrets.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg aria-hidden="true" style="width:26px;height:26px"><use href="#chest"/></svg>Loot Drop</a>
+      <p class="disclosure">Some links on Loot Drop are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Affiliate deals and sponsorships never affect our rankings.</p>
+      <p>Paid products are sold through Lemon Squeezy, our merchant of record. Contact: <a href="mailto:thedrop@mail.grokbot.com">thedrop@mail.grokbot.com</a></p>
+      <p>© <span id="yr">2026</span> Loot Drop</p>
+    </div>
+    <nav aria-label="Site" class="site-links">
+      <ul>
+        <li><a href="/drop/001/">The Drop #1</a></li>
+        <li><a href="/armory/">The Armory</a></li>
+        <li><a href="/armory/starter-loadout/">Free Starter Loadout</a></li>
+        <li><a href="/respawn/">Respawn</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/refunds/">Refund policy</a></li>
+        <li><a href="mailto:thedrop@mail.grokbot.com">Contact</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Social">
+      <ul>
+        <li><a href="https://x.com/lootdrop" rel="noopener">X @lootdrop</a></li>
+        <li><a href="#" aria-label="Discord (coming soon)">Discord @lootdrop</a></li>
+        <li><a href="https://youtube.com/@lootdrop" rel="noopener">YouTube @lootdrop</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
