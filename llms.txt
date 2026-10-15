@@ -1,0 +1,20 @@
+# Loot Drop
+
+> Weekly loot for AI builders. Tested tools, ready-made templates, and fixes when your build breaks. We tested it so you don't have to.
+
+Loot Drop is an independent brand for people building with AI: vibe coders, AI-agent tinkerers, indie hackers, and game developers. It has three products. Rankings are never for sale: sponsors can buy a clearly labeled ad slot but never a grade, and affiliate links never change a ranking. Every grade records the test task, output, cost, and date, and tools are re-tested after major updates.
+
+## Products
+
+- [The Drop](https://lootdrop.tools/#join): Free weekly email digest of AI tools, with S/A/B/C tier-list rankings by use case (vibe coding, AI agents, game-dev tools), new releases with a one-line take, and one "try this" tip each week.
+- [The Armory](https://lootdrop.tools/#loot): Agent templates and prompt packs (app starter kits, research agents, Discord bots), each tested from a clean start and shipped with plain-English setup docs. Coming soon; waitlist open.
+- [Respawn](https://lootdrop.tools/#respawn): Vibe-code rescue service. Fixes broken AI-built apps made with Cursor, Lovable, Bolt, Replit, v0, and similar tools: deploy failures, looping bugs, broken auth. You get a quote and time estimate before work starts, and the fix arrives as a pull request with a plain-English write-up.
+
+## How we rank
+
+- [Ranking method](https://lootdrop.tools/#rank): Each tool in a category runs the same real task. Results are dated, and old grades stay visible after re-tests. S = best in class for that use case, A = strong pick, B = situational, C = skip unless you have a specific reason.
+
+## Optional
+
+- [X / Twitter](https://x.com/lootdrop): @lootdrop
+- [YouTube](https://youtube.com/@lootdrop): @lootdrop

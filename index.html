@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loot Drop | Weekly loot for AI builders</title>
+<meta name="description" content="Weekly loot for AI builders. Tested tools, ready-made templates, and fixes when your build breaks. We tested it so you don't have to.">
+<meta name="theme-color" content="#0b0b12">
+<meta property="og:title" content="Loot Drop | Weekly loot for AI builders">
+<meta property="og:description" content="Tested tools, ready-made templates, and fixes when your build breaks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lootdrop.tools/">
+<meta property="og:site_name" content="Loot Drop">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@lootdrop">
+<meta name="twitter:title" content="Loot Drop | Weekly loot for AI builders">
+<meta name="twitter:description" content="Tested tools, ready-made templates, and fixes when your build breaks.">
+<meta name="robots" content="index, follow">
+<!-- Placeholder domain: replace https://lootdrop.tools/ everywhere once the real domain is live. -->
+<link rel="canonical" href="https://lootdrop.tools/">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://lootdrop.tools/#org",
+      "name": "Loot Drop",
+      "url": "https://lootdrop.tools/",
+      "slogan": "We tested it so you don't have to.",
+      "description": "Weekly loot for AI builders. Tested tools, ready-made templates, and fixes when your build breaks.",
+      "logo": "https://lootdrop.tools/favicon.svg",
+      "sameAs": ["https://x.com/lootdrop", "https://youtube.com/@lootdrop"],
+      "makesOffer": [
+        {"@type": "Offer", "price": "0", "priceCurrency": "USD", "itemOffered": {"@type": "Service", "name": "The Drop", "description": "Free weekly AI-tools digest with S/A/B/C tier-list rankings, tested by use case."}},
+        {"@type": "Offer", "availability": "https://schema.org/PreOrder", "itemOffered": {"@type": "Product", "name": "The Armory", "description": "Agent templates and prompt packs, tested from a clean start. Coming soon."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Respawn", "description": "Vibe-code rescue: fixes for broken AI-built apps from Cursor, Lovable, Bolt, Replit, and v0, delivered as a pull request with a plain-English write-up."}}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://lootdrop.tools/#website",
+      "name": "Loot Drop",
+      "url": "https://lootdrop.tools/",
+      "description": "Tested AI tools ranked S to C, ready-made agent templates, and fixes for broken AI-built apps.",
+      "inLanguage": "en",
+      "publisher": {"@id": "https://lootdrop.tools/#org"}
+    }
+  ]
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='26' width='52' height='30' rx='4' fill='%23ff8a1f'/%3E%3Cpath d='M6 30c0-12 10-20 26-20s26 8 26 20z' fill='%23a855f7'/%3E%3Crect x='26' y='24' width='12' height='14' rx='2' fill='%230b0b12'/%3E%3Ccircle cx='32' cy='31' r='3' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0b12; --bg2:#12121c; --card:#171724; --line:#262638;
+    --text:#ececf3; --muted:#a3a3b8;
+    --legendary:#ff8a1f; --epic:#a855f7; --rare:#3b82f6; --uncommon:#22c55e; --gold:#ffd166;
+    --radius:14px; --max:1080px;
+    --font:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--legendary)}
+  a:hover{color:var(--gold)}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:#000;padding:8px 12px;border-radius:8px;z-index:10}
+  .skip:focus{left:8px}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  header.nav{position:sticky;top:0;z-index:5;background:rgba(11,11,18,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:800;letter-spacing:.3px;font-size:1.15rem}
+  .brand svg{width:32px;height:32px}
+  .nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+  .nav ul a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
+  .nav ul a:hover{color:var(--text)}
+  @media (max-width:640px){.nav ul{display:none}}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:10px;border:0;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
+  .btn-primary{background:linear-gradient(135deg,var(--legendary),#ff5f1f);color:#140a00;box-shadow:0 6px 24px -6px rgba(255,138,31,.6)}
+  .btn-primary:hover{transform:translateY(-1px);color:#140a00;box-shadow:0 10px 30px -6px rgba(255,138,31,.75)}
+  .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--epic);color:var(--text)}
+  .btn-epic{background:var(--epic);color:#fff}
+  .btn-epic:hover{color:#fff;transform:translateY(-1px)}
+  .hero{position:relative;overflow:hidden;padding:96px 0 80px;text-align:center}
+  .hero::before{content:"";position:absolute;inset:-40% -10% auto;height:620px;background:radial-gradient(closest-side,rgba(168,85,247,.28),transparent 70%),radial-gradient(closest-side at 70% 60%,rgba(255,138,31,.22),transparent 70%);pointer-events:none}
+  .hero > .wrap{position:relative}
+  .hero-mark{display:block;width:92px;height:92px;margin:0 auto 18px;filter:drop-shadow(0 10px 30px rgba(255,138,31,.45))}
+  .eyebrow{display:inline-block;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,209,102,.35);padding:5px 12px;border-radius:999px;margin-bottom:18px}
+  h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;margin:0 0 16px;letter-spacing:-.02em}
+  h1 .grad{background:linear-gradient(90deg,var(--legendary),var(--gold) 45%,var(--epic));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tagline{font-size:clamp(1.1rem,2.4vw,1.35rem);color:var(--text);max-width:680px;margin:0 auto 10px}
+  .sub{color:var(--muted);margin:0 auto 32px;max-width:560px}
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  section{padding:72px 0}
+  .section-head{text-align:center;margin-bottom:40px}
+  .section-head h2{font-size:clamp(1.7rem,4vw,2.3rem);margin:0 0 8px;letter-spacing:-.01em}
+  .section-head p{color:var(--muted);margin:0 auto;max-width:600px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:900px){.cards{grid-template-columns:1fr}}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px 24px;display:flex;flex-direction:column}
+  .card::before{content:"";position:absolute;inset:0 0 auto;height:3px;border-radius:var(--radius) var(--radius) 0 0;background:var(--rar)}
+  .card.legendary{--rar:var(--legendary)}
+  .card.epic{--rar:var(--epic)}
+  .card.rare{--rar:var(--rare)}
+  .rarity{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rar);margin-bottom:8px}
+  .card h3{margin:0 0 4px;font-size:1.45rem}
+  .card .lead{font-weight:600;margin:0 0 10px}
+  .card p{color:var(--muted);margin:0 0 14px}
+  .card ul{margin:0 0 20px;padding-left:18px;color:var(--muted)}
+  .card ul li{margin:4px 0}
+  .card .cta{margin-top:auto}
+  .badge{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.1em;background:rgba(168,85,247,.15);color:#d8b4fe;border:1px solid rgba(168,85,247,.45);padding:4px 9px;border-radius:999px}
+  .tiers{display:flex;gap:6px;margin:4px 0 16px}
+  .tier{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;font-weight:800;color:#0b0b12}
+  .t-s{background:var(--legendary)} .t-a{background:var(--epic);color:#fff} .t-b{background:var(--rare);color:#fff} .t-c{background:var(--uncommon)}
+  .panel{background:linear-gradient(180deg,var(--bg2),var(--card));border:1px solid var(--line);border-radius:var(--radius);padding:36px;max-width:760px;margin:0 auto}
+  @media (max-width:560px){.panel{padding:24px 18px}}
+  .inline-form{display:flex;gap:10px;flex-wrap:wrap}
+  .inline-form input[type=email]{flex:1 1 240px}
+  label{display:block;font-weight:600;margin:0 0 6px;font-size:.95rem}
+  .hint{font-weight:400;color:var(--muted);font-size:.85rem}
+  input,select,textarea{width:100%;font:inherit;color:var(--text);background:#0e0e17;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  input::placeholder,textarea::placeholder{color:#6f6f86}
+  input:focus,select:focus,textarea:focus{border-color:var(--epic);outline:none;box-shadow:0 0 0 3px rgba(168,85,247,.3)}
+  textarea{min-height:130px;resize:vertical}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:640px){.grid-2{grid-template-columns:1fr}}
+  .field{margin-bottom:16px}
+  fieldset{border:0;padding:0;margin:0 0 16px}
+  legend{font-weight:600;margin-bottom:8px;font-size:.95rem}
+  .radios{display:flex;flex-wrap:wrap;gap:8px}
+  .radios label{display:inline-flex;align-items:center;gap:8px;font-weight:500;background:#0e0e17;border:1px solid var(--line);border-radius:999px;padding:8px 14px;margin:0;cursor:pointer}
+  .radios input{width:auto;accent-color:var(--legendary)}
+  .radios label:has(input:checked){border-color:var(--legendary);color:var(--gold)}
+  .fine{color:var(--muted);font-size:.85rem;margin:12px 0 0}
+  .form-msg{margin-top:12px;font-weight:600;min-height:1.4em}
+  .form-msg.ok{color:var(--uncommon)} .form-msg.warn{color:var(--gold)}
+  .hp{position:absolute;left:-5000px}
+  .rank-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media (max-width:900px){.rank-grid{grid-template-columns:1fr}}
+  .rank-item{border-left:3px solid var(--epic);padding:4px 0 4px 18px}
+  .rank-item h3{margin:0 0 6px;font-size:1.1rem}
+  .rank-item p{margin:0;color:var(--muted)}
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:.9rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start}
+  footer ul{list-style:none;padding:0;margin:0;display:flex;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--muted)} footer a:hover{color:var(--text)}
+  .disclosure{max-width:560px;margin:8px 0 0}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ld-chest-lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="ld-chest-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa646"/><stop offset="1" stop-color="#e86a0c"/></linearGradient>
+    <symbol id="chest" viewBox="0 0 64 64">
+      <rect x="6" y="28" width="52" height="28" rx="4" fill="url(#ld-chest-box)"/>
+      <path d="M6 32c0-13 10-21 26-21s26 8 26 21z" fill="url(#ld-chest-lid)"/>
+      <rect x="6" y="30" width="52" height="4" fill="#0b0b12" opacity=".35"/>
+      <rect x="27" y="26" width="10" height="13" rx="2" fill="#0b0b12"/>
+      <circle cx="32" cy="32" r="2.6" fill="#ffd166"/>
+      <path d="M14 8l2 4 4 2-4 2-2 4-2-4-4-2 4-2zM50 4l1.5 3 3 1.5-3 1.5L50 13l-1.5-3-3-1.5 3-1.5z" fill="#ffd166"/>
+    </symbol>
+  </defs>
+</svg>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Loot Drop home"><svg aria-hidden="true"><use href="#chest"/></svg>Loot Drop</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#loot">The Loot</a></li>
+        <li><a href="#rank">How we rank</a></li>
+        <li><a href="#respawn">Respawn</a></li>
+        <li><a href="#join">Join The Drop</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap">
+      <svg class="hero-mark" aria-hidden="true"><use href="#chest"/></svg>
+      <span class="eyebrow">We tested it so you don't have to</span>
+      <h1><span class="grad">Loot Drop</span></h1>
+      <p class="tagline">Weekly loot for AI builders. Tested tools, ready-made templates, and fixes when your build breaks.</p>
+      <p class="sub">Too many AI tools and not enough time to try them all. We've cleared the dungeon already, and we bring back what's worth equipping.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#join">Join The Drop, free</a>
+        <a class="btn btn-ghost" href="#respawn">My build is broken</a>
+      </div>
+    </div>
+  </section>
+  <section id="loot">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Pick your loot</h2>
+        <p>Three ways we help you ship: find the right tool, start with gear that works, or get un-stuck.</p>
+      </div>
+      <div class="cards">
+        <article class="card legendary">
+          <div class="rarity">Legendary · Free</div>
+          <h3>The Drop</h3>
+          <p class="lead">A weekly digest plus tier-list rankings.</p>
+          <div class="tiers" aria-label="Tier grades S, A, B, C">
+            <span class="tier t-s">S</span><span class="tier t-a">A</span><span class="tier t-b">B</span><span class="tier t-c">C</span>
+          </div>
+          <p>AI tools graded S to C by use case, from hands-on tests. Every grade shows its proof: the task, the output, the cost, and the date.</p>
+          <ul>
+            <li>Vibe coding, AI agents, game-dev tools</li>
+            <li>New releases with a one-line take</li>
+            <li>One "try this" tip every week</li>
+          </ul>
+          <a class="btn btn-primary cta" href="#join">Get The Drop</a>
+        </article>
+        <article class="card epic">
+          <span class="badge">COMING SOON</span>
+          <div class="rarity">Epic · Gear</div>
+          <h3>The Armory</h3>
+          <p class="lead">Agent templates and prompt packs.</p>
+          <p>Copy-paste setups that run from a clean start: app starter kits, research agents, Discord bots. Every pack is built from setups that held up in our tests.</p>
+          <ul>
+            <li>Tested from scratch before release</li>
+            <li>Plain-English setup docs</li>
+          </ul>
+          <form class="inline-form cta js-signup" data-list="armory" action="https://app.kit.com/forms/YOUR_KIT_FORM_ID/subscriptions" method="post">
+            <label class="sr-only" for="armory-email">Email for Armory launch</label>
+            <input id="armory-email" type="email" name="email_address" placeholder="you@example.com" required autocomplete="email">
+            <input type="hidden" name="fields[source]" value="armory-waitlist">
+            <button class="btn btn-epic" type="submit">Notify me</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </article>
+        <article class="card rare">
+          <div class="rarity">Rare · Rescue</div>
+          <h3>Respawn</h3>
+          <p class="lead">Your build died? We'll respawn it.</p>
+          <p>Fixes for broken AI-built apps. If Cursor, Lovable, Bolt, Replit, or v0 got you 80% of the way and the last 20% keeps crashing, we reproduce the bug, fix it, and explain the fix in plain English.</p>
+          <ul>
+            <li>Deploy failures, looping bugs, broken auth</li>
+            <li>Fix delivered as a pull request with a write-up</li>
+          </ul>
+          <a class="btn btn-ghost cta" href="#respawn">Request a respawn</a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section id="join">
+    <div class="wrap">
+      <div class="panel">
+        <div class="section-head" style="margin-bottom:24px">
+          <h2>Join The Drop</h2>
+          <p>One email a week: tested tools, fresh tier lists, and new releases worth your time. Free. Unsubscribe anytime.</p>
+        </div>
+        <!-- Kit: action="https://app.kit.com/forms/<FORM_ID>/subscriptions", field "email_address" -->
+        <form class="inline-form js-signup" data-list="drop" action="https://app.kit.com/forms/YOUR_KIT_FORM_ID/subscriptions" method="post">
+          <label class="sr-only" for="drop-email">Email address</label>
+          <input id="drop-email" type="email" name="email_address" placeholder="you@example.com" required autocomplete="email">
+          <input type="hidden" name="fields[source]" value="the-drop">
+          <button class="btn btn-primary" type="submit">Get weekly loot</button>
+          <p class="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="fine">No spam. We send loot, not junk mail.</p>
+      </div>
+    </div>
+  </section>
+  <section id="rank">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How we rank</h2>
+        <p>Tier lists are only useful if you can trust them. Here are the rules we follow.</p>
+      </div>
+      <div class="rank-grid">
+        <div class="rank-item">
+          <h3>Hands-on tests</h3>
+          <p>Each tool in a category runs the same real task, such as "build this to-do app" or "make a 32×32 knight sprite." We record the output, the time taken, and the cost.</p>
+        </div>
+        <div class="rank-item">
+          <h3>Dated verdicts</h3>
+          <p>Every grade shows when it was tested. When a tool ships a major update, we test it again. Old grades stay visible, so you can see what changed.</p>
+        </div>
+        <div class="rank-item">
+          <h3>Never for sale</h3>
+          <p>Sponsors can buy a labeled ad slot. They can't buy a grade. Affiliate links never change a ranking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="respawn">
+    <div class="wrap">
+      <div class="panel">
+        <div class="section-head" style="margin-bottom:24px">
+          <h2>Request a Respawn</h2>
+          <p>Tell us what broke. We'll reply with a quote and a time estimate before any work starts. Don't paste API keys or passwords here.</p>
+        </div>
+        <!-- Formspree: action="https://formspree.io/f/<FORM_ID>". Netlify Forms works as-is on Netlify only. -->
+        <form id="respawn-form" class="js-intake" name="respawn" method="post" action="https://formspree.io/f/YOUR_FORM_ID" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="respawn">
+          <p class="hp"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="grid-2">
+            <div class="field">
+              <label for="r-name">Name or handle</label>
+              <input id="r-name" name="name" required autocomplete="nickname" placeholder="e.g. pixelwizard">
+            </div>
+            <div class="field">
+              <label for="r-email">Email</label>
+              <input id="r-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="field">
+            <label for="r-link">Repo or app link <span class="hint">(GitHub repo, deployed URL, or project share link)</span></label>
+            <input id="r-link" name="repo_or_app_link" type="url" required placeholder="https://github.com/you/your-app">
+          </div>
+          <fieldset>
+            <legend>What tool built it?</legend>
+            <div class="radios">
+              <label><input type="radio" name="built_with" value="Cursor" required> Cursor</label>
+              <label><input type="radio" name="built_with" value="Lovable"> Lovable</label>
+              <label><input type="radio" name="built_with" value="Bolt"> Bolt</label>
+              <label><input type="radio" name="built_with" value="Replit"> Replit</label>
+              <label><input type="radio" name="built_with" value="v0"> v0</label>
+              <label><input type="radio" name="built_with" value="Other"> Other</label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="r-broken">What's broken? <span class="hint">(What you expected, what happens instead, any error messages)</span></label>
+            <textarea id="r-broken" name="whats_broken" required placeholder="Deploys fine locally, but Vercel build fails with…"></textarea>
+          </div>
+          <div class="field">
+            <label for="r-urgency">Urgency</label>
+            <select id="r-urgency" name="urgency" required>
+              <option value="">Choose one…</option>
+              <option value="whenever">Whenever: side quest</option>
+              <option value="this-week">This week</option>
+              <option value="asap">ASAP: boss fight tomorrow</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">Send it. Respawn my build.</button>
+          <p class="form-msg" role="status" aria-live="polite"></p>
+          <p class="fine">We'll ask for repo access with limited permissions only if you accept the quote. We never store your secrets.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top"><svg aria-hidden="true" style="width:26px;height:26px"><use href="#chest"/></svg>Loot Drop</a>
+      <p class="disclosure">Some links on Loot Drop are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Affiliate deals and sponsorships never affect our rankings.</p>
+      <p>© <span id="yr">2026</span> Loot Drop</p>
+    </div>
+    <nav aria-label="Social">
+      <ul>
+        <li><a href="https://x.com/lootdrop" rel="noopener">X @lootdrop</a></li>
+        <li><a href="#" aria-label="Discord (coming soon)">Discord @lootdrop</a></li>
+        <li><a href="https://youtube.com/@lootdrop" rel="noopener">YouTube @lootdrop</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('form.js-signup, form.js-intake').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      var msg = form.querySelector('.form-msg');
+      var action = form.getAttribute('action') || '';
+      if (action.indexOf('YOUR_') !== -1) {
+        e.preventDefault();
+        msg.className = 'form-msg warn';
+        msg.textContent = "This form isn't connected yet. Endpoint coming soon.";
+        return;
+      }
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      fetch(action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          msg.className = 'form-msg ok';
+          msg.textContent = form.classList.contains('js-intake') ? "Got it. We'll reply with a quote soon." : "You're in. Watch your inbox for loot.";
+          form.reset();
+        })
+        .catch(function () { form.submit(); })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
+</script>
+</body>
+</html>
