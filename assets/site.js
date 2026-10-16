@@ -13,17 +13,27 @@
         msg.textContent = "This form isn't connected yet. Endpoint coming soon.";
         return;
       }
+      // Kit's subscriptions endpoint is a normal form POST. Cross-origin fetch
+      // can be blocked or return HTTP 200 with status "failed", so don't intercept.
+      if (form.classList.contains('js-signup')) return;
       e.preventDefault();
       var btn = form.querySelector('button[type=submit]');
       btn.disabled = true;
       fetch(action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
         .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
+          if (!r.ok) throw new Error(String(r.status));
           msg.className = 'form-msg ok';
-          msg.textContent = form.classList.contains('js-intake') ? "Got it. We'll reply with a quote soon." : "You're in. Watch your inbox for loot.";
+          msg.textContent = "Got it. We'll reply with a quote soon.";
           form.reset();
         })
-        .catch(function () { form.submit(); })
+        .catch(function (err) {
+          if (err && /^[0-9]+$/.test(err.message)) {
+            msg.className = 'form-msg warn';
+            msg.textContent = "Couldn't send that. Try again in a moment.";
+            return;
+          }
+          form.submit();
+        })
         .finally(function () { btn.disabled = false; });
     });
   });

@@ -238,7 +238,7 @@
             <li>Plain-English setup docs</li>
           </ul>
           <p><a href="/armory/starter-loadout/">Free now: the Starter Loadout</a> · <a href="/armory/">See the Armory</a></p>
-          <form class="inline-form cta js-signup" data-list="armory" action="https://app.kit.com/forms/YOUR_KIT_FORM_ID/subscriptions" method="post">
+          <form class="inline-form cta js-signup" data-list="armory" action="https://app.kit.com/forms/10054604/subscriptions" method="post">
             <label class="sr-only" for="armory-email">Email for Armory launch</label>
             <input id="armory-email" type="email" name="email_address" placeholder="you@example.com" required autocomplete="email">
             <input type="hidden" name="fields[source]" value="armory-waitlist">
@@ -269,7 +269,7 @@
           <p>One email a week: tested tools, fresh tier lists, and new releases worth your time. Free. Unsubscribe anytime.</p>
         </div>
         <!-- Kit: action="https://app.kit.com/forms/<FORM_ID>/subscriptions", field "email_address" -->
-        <form class="inline-form js-signup" data-list="drop" action="https://app.kit.com/forms/YOUR_KIT_FORM_ID/subscriptions" method="post">
+        <form class="inline-form js-signup" data-list="drop" action="https://app.kit.com/forms/10054604/subscriptions" method="post">
           <label class="sr-only" for="drop-email">Email address</label>
           <input id="drop-email" type="email" name="email_address" placeholder="you@example.com" required autocomplete="email">
           <input type="hidden" name="fields[source]" value="the-drop">
@@ -310,7 +310,7 @@
           <p>Tell us what broke. We'll reply with a quote and a time estimate before any work starts. Don't paste API keys or passwords here.</p>
         </div>
         <!-- Formspree: action="https://formspree.io/f/<FORM_ID>". Netlify Forms works as-is on Netlify only. -->
-        <form id="respawn-form" class="js-intake" name="respawn" method="post" action="https://formspree.io/f/YOUR_FORM_ID" data-netlify="true" netlify-honeypot="bot-field">
+        <form id="respawn-form" class="js-intake" name="respawn" method="post" action="https://formspree.io/f/xwlvaagk" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="respawn">
           <p class="hp"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div class="grid-2">
@@ -400,17 +400,27 @@
         msg.textContent = "This form isn't connected yet. Endpoint coming soon.";
         return;
       }
+      // Kit's subscriptions endpoint is a normal form POST. Cross-origin fetch
+      // can be blocked or return HTTP 200 with status "failed", so don't intercept.
+      if (form.classList.contains('js-signup')) return;
       e.preventDefault();
       var btn = form.querySelector('button[type=submit]');
       btn.disabled = true;
       fetch(action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
         .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
+          if (!r.ok) throw new Error(String(r.status));
           msg.className = 'form-msg ok';
-          msg.textContent = form.classList.contains('js-intake') ? "Got it. We'll reply with a quote soon." : "You're in. Watch your inbox for loot.";
+          msg.textContent = "Got it. We'll reply with a quote soon.";
           form.reset();
         })
-        .catch(function () { form.submit(); })
+        .catch(function (err) {
+          if (err && /^[0-9]+$/.test(err.message)) {
+            msg.className = 'form-msg warn';
+            msg.textContent = "Couldn't send that. Try again in a moment.";
+            return;
+          }
+          form.submit();
+        })
         .finally(function () { btn.disabled = false; });
     });
   });
