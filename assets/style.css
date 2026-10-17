@@ -197,6 +197,23 @@
   .level-list h3{margin:0 0 6px;font-size:1.12rem}
   .level-list .num{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--jr);margin-right:8px}
   .level-list p{margin:4px 0;color:#d4d4e0}
+  body.jr section[id]{scroll-margin-top:84px}
+  .path-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+  .path-step{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--jr);border-radius:var(--radius);padding:18px 20px 14px;margin:0}
+  .path-step h3{margin:0 0 8px;font-size:1.28rem}
+  .path-step p{margin:6px 0;color:#d4d4e0}
+  .path-step .num{display:inline-block;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--jr);margin:0 0 6px}
+  .lessons{margin-top:10px;border-top:1px solid var(--line);padding-top:4px}
+  .lessons summary{cursor:pointer;font-weight:700;color:var(--text);padding:12px 4px 12px 0;min-height:44px}
+  .lessons summary:hover{color:var(--jr)}
+  .lessons ol{list-style:decimal;margin:4px 0 8px;padding-left:1.3rem}
+  .lessons li{margin:4px 0;color:#d4d4e0}
+  .path-lead{max-width:680px;margin:-12px auto 28px;text-align:center;color:var(--muted)}
+  .path-lead strong{color:var(--text)}
+  .path-note{max-width:760px;margin:22px auto 0}
+  .parent-note h3{margin:0 0 8px;color:var(--gold);font-size:1.15rem}
+  .parent-note ul{margin:8px 0 0;padding-left:1.2rem}
+  .parent-note li{margin:8px 0;color:#e9e3cf}
   .safety-grid,.make-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:700px){.safety-grid,.make-grid{grid-template-columns:1fr}}
   .safety-grid article,.make-grid article{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--jr);border-radius:var(--radius);padding:16px 18px 8px;margin:0}
@@ -232,7 +249,8 @@
     body.jr .wrap{max-width:none}
     body.jr a{text-decoration:underline}
     body.jr a[href^="http"]::after{content:" (" attr(href) ")";font-weight:400;font-size:.85em}
-    body.jr pre,body.jr .quest,body.jr .parent-note,body.jr .note,body.jr th,body.jr td,body.jr .level-list > li,body.jr .card,body.jr .checks li::before{border:1px solid #bbb!important}
+    body.jr pre,body.jr .quest,body.jr .parent-note,body.jr .note,body.jr th,body.jr td,body.jr .level-list > li,body.jr .path-step,body.jr .card,body.jr .checks li::before{border:1px solid #bbb!important}
+    body.jr details.lessons > *{display:block!important}
     body.jr pre{white-space:pre-wrap!important;overflow:visible!important;max-height:none!important}
     body.jr h2,body.jr h3{break-after:avoid}
     body.jr pre,body.jr .quest,body.jr .parent-note,body.jr .codebox,body.jr tr,body.jr .card{break-inside:avoid}
