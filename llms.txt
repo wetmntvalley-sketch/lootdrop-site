@@ -10,6 +10,13 @@ Loot Drop is an independent brand for people building with AI: vibe coders, AI-a
 - [The Armory](https://lootdrop.tools/armory/): Agent templates and prompt packs (app starter kits, research agents, Discord bots), each tested from a clean start and shipped with plain-English setup docs. Paid packs coming soon (planned: Ship-It Loadout $19, Agent Builder Pack $29); waitlist open. A free Starter Loadout is available now.
 - [Respawn](https://lootdrop.tools/respawn/): Vibe-code rescue service. Fixes broken AI-built apps made with Cursor, Lovable, Bolt, Replit, v0, and similar tools: deploy failures, looping bugs, broken auth. You get a quote and time estimate before work starts, and the fix arrives as a pull request with a plain-English write-up. Starting prices: Quick Fix from $49, Full Rescue from $249. No charge before you accept a quote; no fix, no fee.
 
+## Loot Drop Jr.
+
+Parent-run bonus section for ages 9–13. Kids invent original characters and build small games in Microsoft MakeCode Arcade. Any AI help is typed by a grown-up on the grown-up's own account. These pages have no forms, analytics, or trackers, and they do not collect children's personal information. Level 1 is free. The full manual ($19) and the parent-and-kid bundle ($29) are coming soon and are not for sale yet.
+
+- [Loot Drop Jr.](https://lootdrop.tools/jr/): What Level Up is, the 10-level outline, what kids make, the safety rules, and planned prices. Written for parents.
+- [Level 1: Spark](https://lootdrop.tools/jr/level-1/): Free chapter. Idea Forge, an original hero, and a tiny collect-it game in MakeCode Arcade, plus prompts a grown-up can paste into their own AI chat.
+
 ## Issues and free resources
 
 - [The Drop #1: The coding-agent tier list (paper edition)](https://lootdrop.tools/drop/001/): Provisional S-to-C tiers for Claude Code, OpenAI Codex, Cursor, GitHub Copilot, Lovable, Bolt.new, Replit Agent, Google Antigravity, v0, Devin Desktop and Gemini CLI, built from public pricing checked Oct 15, 2026. Hands-on tests start in Drop #2.
