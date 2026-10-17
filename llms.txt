@@ -28,4 +28,6 @@ Loot Drop is an independent brand for people building with AI: vibe coders, AI-a
 - [Refund policy](https://lootdrop.tools/refunds/): 14-day refunds on paid Armory packs; no-fix-no-fee on Respawn.
 - Contact: thedrop@mail.grokbot.com
 
-<!-- TODO: add an "## Optional" section with [X / Twitter](https://x.com/thelootdrop): @thelootdrop once @thelootdrop is claimed. -->
+## Optional
+
+- [X / Twitter](https://x.com/alootdrop): @alootdrop
