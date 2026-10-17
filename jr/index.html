@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loot Drop Jr.: Level Up, make a first game with AI | Loot Drop</title>
+<meta name="description" content="A parent-run manual for ages 9–13. Kids invent original characters and build a small game in MakeCode Arcade. You run the AI. Level 1 is free.">
+<meta name="theme-color" content="#0b0b12">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lootdrop.tools/jr/">
+<meta property="og:title" content="Loot Drop Jr.: Level Up, make a first game with AI | Loot Drop">
+<meta property="og:description" content="A parent-run manual for ages 9–13. Kids invent original characters and build a small game in MakeCode Arcade. You run the AI. Level 1 is free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lootdrop.tools/jr/">
+<meta property="og:site_name" content="Loot Drop">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@alootdrop">
+<meta name="twitter:title" content="Loot Drop Jr.: Level Up, make a first game with AI | Loot Drop">
+<meta name="twitter:description" content="A parent-run manual for ages 9–13. Kids invent original characters and build a small game in MakeCode Arcade. You run the AI. Level 1 is free.">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='26' width='52' height='30' rx='4' fill='%23ff8a1f'/%3E%3Cpath d='M6 30c0-12 10-20 26-20s26 8 26 20z' fill='%23a855f7'/%3E%3Crect x='26' y='24' width='12' height='14' rx='2' fill='%230b0b12'/%3E%3Ccircle cx='32' cy='31' r='3' fill='%23ffd166'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body class="jr">
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ld-chest-lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="ld-chest-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa646"/><stop offset="1" stop-color="#e86a0c"/></linearGradient>
+    <symbol id="chest" viewBox="0 0 64 64">
+      <rect x="6" y="28" width="52" height="28" rx="4" fill="url(#ld-chest-box)"/>
+      <path d="M6 32c0-13 10-21 26-21s26 8 26 21z" fill="url(#ld-chest-lid)"/>
+      <rect x="6" y="30" width="52" height="4" fill="#0b0b12" opacity=".35"/>
+      <rect x="27" y="26" width="10" height="13" rx="2" fill="#0b0b12"/>
+      <circle cx="32" cy="32" r="2.6" fill="#ffd166"/>
+      <path d="M14 8l2 4 4 2-4 2-2 4-2-4-4-2 4-2zM50 4l1.5 3 3 1.5-3 1.5L50 13l-1.5-3-3-1.5 3-1.5z" fill="#ffd166"/>
+    </symbol>
+  </defs>
+</svg>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Loot Drop home"><svg aria-hidden="true"><use href="#chest"/></svg>Loot Drop</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="/drop/001/">The Drop #1</a></li>
+        <li><a href="/armory/">Armory</a></li>
+        <li><a href="/respawn/">Respawn</a></li>
+        <li><a href="/jr/" aria-current="page">Loot Drop Jr.</a></li>
+        <li><a href="/#join">Join The Drop</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <span aria-current="page">Loot Drop Jr.</span></nav>
+      <span class="eyebrow">For parents · Ages 9–13</span>
+      <h1><span class="grad">Loot Drop Jr.</span></h1>
+      <p class="tagline">Level Up: Make Your First Game with AI</p>
+      <p class="sub">A short manual your kid can read, and you run. They invent an original character and build a tiny game in Microsoft MakeCode Arcade. Any AI help happens on your account, with you at the keyboard.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="/jr/level-1/">Read Level 1 free</a>
+        <a class="btn btn-ghost" href="#levels">See the 10 levels</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" id="about">
+    <div class="wrap prose">
+      <h2>What Level Up is</h2>
+      <p>Level Up is the first Loot Drop Jr. manual. It is written for kids ages 9–13, and it is sold to and run by a parent or guardian. Each level is a quest with a goal, a hands-on activity, an AI prompt you type yourself, a boss challenge, and a parent note.</p>
+      <p>The main tool is <a href="https://arcade.makecode.com/" rel="noopener">Microsoft MakeCode Arcade</a>. It is free, it runs in the browser, and a child does not need an account to start building. Blocks make a character move, pick up an item, and race a timer. Signing in is only for cloud saving. The manual tells you to download a backup, because clearing browser data can erase a project.</p>
+      <p>The rule of the book: <strong>AI is your sidekick, not your controller.</strong> You type. Your kid decides what to keep. Every prompt is written so it works in any chat AI.</p>
+    </div>
+  </section>
+
+  <section class="tight" id="make">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What kids make</h2>
+        <p>Original ideas and small games they can actually play. Famous characters stay out of anything they share.</p>
+      </div>
+      <div class="make-grid">
+        <article>
+          <h3>In free Level 1, about 60–90 minutes</h3>
+          <p>A one-page game idea, a hero they drew, and a tiny “collect it” game: move, grab the item, score points, beat the clock. Then someone in the family playtests it.</p>
+        </article>
+        <article>
+          <h3>Across the full manual</h3>
+          <p>Paper rules, pixel heroes and a world, a mini platformer, fair enemies, three levels, sound and score, a family playtest, the same game in a second tool, and a cover screen with credits.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="levels">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Ten levels</h2>
+        <p>Level 1 is on the site now. Levels 2–10 are the plan for the full manual. Each AI prompt is for you to type on your own account.</p>
+      </div>
+      <ol class="level-list">
+        <li>
+          <h3><span class="num">Level 1</span> Spark · free now</h3>
+          <p><strong>Goal.</strong> Invent an original game idea and make a tiny playable game.</p>
+          <p><strong>Activity.</strong> Idea Forge, then a 30-second “collect it” game in MakeCode Arcade. <a href="/jr/level-1/">Read the chapter</a>.</p>
+          <p><strong>AI prompt you type.</strong> Help brainstorm 10 original hero ideas that are not from any existing game.</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 2</span> Rules of the Game</h3>
+          <p><strong>Goal.</strong> Understand goals, rules, win and lose, and the core loop.</p>
+          <p><strong>Activity.</strong> A paper prototype played with dice or cards.</p>
+          <p><strong>AI prompt you type.</strong> Explain a core loop to an 11-year-old using 3 games as examples, without spoilers.</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 3</span> Hero &amp; World Builder</h3>
+          <p><strong>Goal.</strong> Create original characters and a world.</p>
+          <p><strong>Activity.</strong> Draw 16×16 pixel heroes and fill in a world map sheet.</p>
+          <p><strong>AI prompt you type.</strong> Give feedback on this character idea. Is it too close to any famous character?</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 4</span> Make It Move</h3>
+          <p><strong>Goal.</strong> Controls, speed, jumping, and gravity.</p>
+          <p><strong>Activity.</strong> Build a mini platformer in MakeCode Arcade.</p>
+          <p><strong>AI prompt you type.</strong> My character falls through the floor in MakeCode Arcade. What are 3 things to check?</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 5</span> Danger Zone</h3>
+          <p><strong>Goal.</strong> Enemies, obstacles, and a fair difficulty curve.</p>
+          <p><strong>Activity.</strong> Add 2 enemies and 3 difficulty steps.</p>
+          <p><strong>AI prompt you type.</strong> Suggest 5 enemy behaviours for a kid’s game that are fun and not scary.</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 6</span> Level Designer</h3>
+          <p><strong>Goal.</strong> Build maps with tilemaps, from easy to hard.</p>
+          <p><strong>Activity.</strong> Design 3 levels on graph paper, then build them.</p>
+          <p><strong>AI prompt you type.</strong> Review my level plan: is the jump from level 1 to 2 too hard?</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 7</span> Juice It Up</h3>
+          <p><strong>Goal.</strong> Sound, effects, a score, and game feel.</p>
+          <p><strong>Activity.</strong> Add sounds, a score, a title screen, and a game-over screen.</p>
+          <p><strong>AI prompt you type.</strong> What small effects make collecting a coin feel satisfying?</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 8</span> Playtest Party</h3>
+          <p><strong>Goal.</strong> Get feedback and squash bugs.</p>
+          <p><strong>Activity.</strong> Run a family playtest with the Playtest Scorecard.</p>
+          <p><strong>AI prompt you type.</strong> Turn these playtest notes into a top-5 fix list for a kid.</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 9</span> Choose Your Next World</h3>
+          <p><strong>Goal.</strong> Try a second tool: Scratch, GDevelop, or Roblox Studio.</p>
+          <p><strong>Activity.</strong> Rebuild the Level 1 game in the new tool. You stay with them. Roblox has a social side, so it needs the closer supervision.</p>
+          <p><strong>AI prompt you type.</strong> Compare how Scratch and MakeCode Arcade handle the same “collect it” game.</p>
+        </li>
+        <li>
+          <h3><span class="num">Level 10</span> Ship It (Safely)</h3>
+          <p><strong>Goal.</strong> Share a game safely and proudly.</p>
+          <p><strong>Activity.</strong> The “Ready to Share?” checklist, credits, and a cover screen.</p>
+          <p><strong>AI prompt you type.</strong> Help write a short, friendly game description with no personal info.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="tight" id="safety">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How this stays safe</h2>
+        <p>You are in the loop the whole time. These pages do not ask your child for anything.</p>
+      </div>
+      <div class="safety-grid">
+        <article>
+          <h3>No kids’ personal info</h3>
+          <p>Games, project titles, and AI chats use a made-up creator name. Real names, school, town, age, photos, and voice stay out.</p>
+        </article>
+        <article>
+          <h3>AI on a parent’s account</h3>
+          <p>Most chat AIs are not for under-13s to use on their own. You open the chat, you type, and you sit together. Your kid never makes their own AI account for this manual.</p>
+        </article>
+        <article>
+          <h3>Original characters only</h3>
+          <p>Kids name the action (jump, collect, race) and the feeling (fast, brave, silly), then invent someone new. Anything shared uses their own characters, names, art, and music.</p>
+        </article>
+        <article>
+          <h3>Safe sharing</h3>
+          <p>Level 1 stays on your computer. Public posting waits for Level 10, a parent, and the Ready to Share checklist. Family and friends come first. Comments and chat stay off or supervised.</p>
+        </article>
+      </div>
+      <div class="prose">
+        <p>Loot Drop Jr. pages have no signup form, no analytics, and no embedded players or ads. We do not collect children’s information here. When the rest of the manual is ready, a parent can hear about it by joining <a href="/#join">The Drop</a> on the homepage. That list is for adults. Use your own email.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Pricing</h2>
+        <p>Level 1 is free to read and print today. The paid editions are not on sale yet, so there is no checkout on this page.</p>
+      </div>
+      <div class="cards">
+        <article class="card jr">
+          <div class="rarity">Free · Available now</div>
+          <h3>Level 1: Spark</h3>
+          <p class="price">$0</p>
+          <p class="lead">The first quest, on the web, ready to print.</p>
+          <ul>
+            <li>Idea Forge and a hero card</li>
+            <li>A tiny MakeCode Arcade game</li>
+            <li>Three AI prompts for your account</li>
+            <li>A parent note at the end</li>
+          </ul>
+          <a class="btn btn-primary cta" href="/jr/level-1/">Read Level 1 free</a>
+        </article>
+        <article class="card epic">
+          <span class="badge">COMING SOON</span>
+          <div class="rarity">Epic · Manual</div>
+          <h3>Level Up</h3>
+          <p class="price">$19 <small>planned · not on sale yet</small></p>
+          <p class="lead">All 10 levels plus a short Parent Guide.</p>
+          <ul>
+            <li>Levels 2–10, still in progress</li>
+            <li>Setup, AI safety, and screen time</li>
+            <li>How to help without taking over</li>
+            <li>Same pages, in a printable manual</li>
+          </ul>
+          <p class="fine">Coming soon. No checkout until it is actually finished.</p>
+        </article>
+        <article class="card legendary">
+          <span class="badge">COMING SOON</span>
+          <div class="rarity">Legendary · Bundle</div>
+          <h3>Parent + kid bundle</h3>
+          <p class="price">$29 <small>planned · not on sale yet</small></p>
+          <p class="lead">The manual, plus printables you can put on the table.</p>
+          <ul>
+            <li>Everything in the $19 manual</li>
+            <li>Printable workbook</li>
+            <li>Badge sheets for finished levels</li>
+            <li>Hero Card, idea sheet, and playtest scorecard</li>
+          </ul>
+          <p class="fine">Coming soon. No checkout until it is actually finished.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" id="loot-drop">
+    <div class="wrap prose">
+      <h2>Part of Loot Drop</h2>
+      <p>Loot Drop Jr. is a bonus section of <a href="/">Loot Drop</a>, beside The Drop, The Armory, and Respawn. The rest of the site is for adults who build with AI: tested tool rankings, templates, and fixes for broken apps. Rankings over there are never for sale. This manual is a family how-to, separate from those rankings, with no sponsor.</p>
+      <div class="hero-ctas" style="justify-content:flex-start">
+        <a class="btn btn-ghost" href="/">Loot Drop home</a>
+        <a class="btn btn-ghost" href="/drop/001/">The Drop #1</a>
+        <a class="btn btn-ghost" href="/armory/">The Armory</a>
+        <a class="btn btn-ghost" href="/respawn/">Respawn</a>
+        <a class="btn btn-primary" href="/#join">Join The Drop</a>
+      </div>
+      <p class="fine">Join The Drop with a parent email if you want a note when the full manual is ready. There is no signup form on this page.</p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg aria-hidden="true" style="width:26px;height:26px"><use href="#chest"/></svg>Loot Drop</a>
+      <p class="disclosure">Some links on Loot Drop are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Affiliate deals and sponsorships never affect our rankings.</p>
+      <p>Paid products are sold through Lemon Squeezy, our merchant of record. Contact: <a href="mailto:thedrop@mail.grokbot.com">thedrop@mail.grokbot.com</a></p>
+      <p>© <span id="yr">2026</span> Loot Drop</p>
+    </div>
+    <nav aria-label="Site" class="site-links">
+      <ul>
+        <li><a href="/drop/001/">The Drop #1</a></li>
+        <li><a href="/armory/">The Armory</a></li>
+        <li><a href="/armory/starter-loadout/">Free Starter Loadout</a></li>
+        <li><a href="/respawn/">Respawn</a></li>
+        <li><a href="/jr/">Loot Drop Jr.</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/refunds/">Refund policy</a></li>
+        <li><a href="mailto:thedrop@mail.grokbot.com">Contact</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Social">
+      <ul>
+        <li><a href="https://x.com/alootdrop" rel="noopener">X @alootdrop</a></li>
+        <li><a href="https://discord.gg/37KPM3mthc" target="_blank" rel="noopener" aria-label="Join the Loot Drop Discord">Discord</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
