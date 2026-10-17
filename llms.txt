@@ -30,5 +30,4 @@ Loot Drop is an independent brand for people building with AI: vibe coders, AI-a
 
 ## Optional
 
-- [X / Twitter](https://x.com/lootdrop): @lootdrop
-- [YouTube](https://youtube.com/@lootdrop): @lootdrop
+- [X / Twitter](https://x.com/alootdrop): @alootdrop
