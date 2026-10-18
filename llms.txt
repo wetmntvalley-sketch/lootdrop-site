@@ -12,9 +12,9 @@ Loot Drop is an independent brand for people building with AI: vibe coders, AI-a
 
 ## Loot Drop Jr.
 
-Parent-run bonus section. A three-module path for ages 9–14: Level Up 1, Make Your First Game with AI (MakeCode Arcade, Level 1 free, full manual $19 and parent-and-kid bundle $29 coming soon); Level Up 2, Real Code Quest; and Level Up 3, Bring Your World to Life. Modules 2 and 3 are coming soon, with no price listed yet. Kids invent original characters, then move from blocks to typed code and the Godot engine. Any AI help is typed by a grown-up on the grown-up's own account. These pages have no forms, analytics, or trackers, and they do not collect children's personal information.
+Parent-run bonus section. A three-module path for ages 9–14: Level Up 1, Make Your First Game with AI (MakeCode Arcade, Level 1 free, full manual $19 and parent-and-student bundle $29 coming soon); Level Up 2, Real Code Quest; and Level Up 3, Bring Your World to Life. Modules 2 and 3 are coming soon, with no price listed yet. Students invent original characters, then move from blocks to typed code and the Godot engine. Any AI help is typed by a grown-up on the grown-up's own account. These pages have no forms, analytics, or trackers, and they do not collect children's personal information.
 
-- [Loot Drop Jr.](https://lootdrop.tools/jr/): The three-module learning path, the Level Up 1 outline, what kids make, the safety rules, and planned prices for the first manual. Written for parents.
+- [Loot Drop Jr.](https://lootdrop.tools/jr/): The three-module learning path, the Level Up 1 outline, what students make, the safety rules, and planned prices for the first manual. Written for parents.
 - [Level 1: Spark](https://lootdrop.tools/jr/level-1/): Free chapter. Idea Forge, an original hero, and a tiny collect-it game in MakeCode Arcade, plus prompts a grown-up can paste into their own AI chat.
 
 ## Issues and free resources
