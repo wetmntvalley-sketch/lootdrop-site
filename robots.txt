@@ -1,38 +1,51 @@
-# Loot Drop welcomes search engines and AI crawlers.
+# Level Up Makers welcomes search engines and AI crawlers.
+# Archived Loot Drop pages stay on the site but should not be indexed.
 User-agent: *
 Allow: /
+Disallow: /archive/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /archive/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /archive/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /archive/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /archive/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /archive/
 
 User-agent: Claude-User
 Allow: /
+Disallow: /archive/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /archive/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /archive/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /archive/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /archive/
 
 User-agent: CCBot
 Allow: /
+Disallow: /archive/
 
-Sitemap: https://lootdrop.tools/sitemap.xml
+Sitemap: https://levelupmakers.com/sitemap.xml

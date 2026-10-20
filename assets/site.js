@@ -1,4 +1,4 @@
-/* Loot Drop shared JS: footer year, Kit/Formspree form handling, copy buttons. */
+/* Shared JS: footer year, archived-page forms, and copy buttons. */
 (function () {
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
