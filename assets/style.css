@@ -1,4 +1,4 @@
-/* Loot Drop shared styles. Base rules mirror the inline CSS in /index.html; keep them in sync. */
+/* Level Up Makers shared styles. The homepage and inner pages use this file. */
   :root{
     --bg:#0b0b12; --bg2:#12121c; --card:#171724; --line:#262638;
     --text:#ececf3; --muted:#a3a3b8;
@@ -185,7 +185,7 @@
   .prose .weights li,.prose .filelist li{margin:0}
   .card .price{color:var(--text)}
 
-  /* ---- Loot Drop Jr.: same site, a slightly brighter and friendlier accent ---- */
+  /* ---- Level Up Makers accent. The body class stays jr so existing rules keep working. ---- */
   body.jr{--jr:#5eecc4}
   body.jr .page-hero::before{background:radial-gradient(closest-side,rgba(94,236,196,.30),transparent 70%),radial-gradient(closest-side at 72% 58%,rgba(255,209,102,.24),transparent 70%)}
   body.jr .eyebrow{color:var(--jr);border-color:rgba(94,236,196,.45)}

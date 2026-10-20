@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8 prompt templates for debugging, refactoring and shipping AI-built apps | Loot Drop</title>
+<meta name="description" content="Copy-paste prompts for coding agents: reproduce-then-fix, error log triage, loop breaker, deploy failure fix, safe refactor, characterization tests, pre-ship security review, and session save.">
+<meta name="theme-color" content="#0b0b12">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://levelupmakers.com/archive/armory/starter-loadout/prompts/">
+<meta property="og:title" content="8 prompt templates for debugging, refactoring and shipping AI-built apps | Loot Drop">
+<meta property="og:description" content="Copy-paste prompts for coding agents: reproduce-then-fix, error log triage, loop breaker, deploy failure fix, safe refactor, characterization tests, pre-ship security review, and session save.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levelupmakers.com/archive/armory/starter-loadout/prompts/">
+<meta property="og:site_name" content="Loot Drop">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@alootdrop">
+<meta name="twitter:title" content="8 prompt templates for debugging, refactoring and shipping AI-built apps | Loot Drop">
+<meta name="twitter:description" content="Copy-paste prompts for coding agents: reproduce-then-fix, error log triage, loop breaker, deploy failure fix, safe refactor, characterization tests, pre-ship security review, and session save.">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='26' width='52' height='30' rx='4' fill='%23ff8a1f'/%3E%3Cpath d='M6 30c0-12 10-20 26-20s26 8 26 20z' fill='%23a855f7'/%3E%3Crect x='26' y='24' width='12' height='14' rx='2' fill='%230b0b12'/%3E%3Ccircle cx='32' cy='31' r='3' fill='%23ffd166'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="ld-chest-lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="ld-chest-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa646"/><stop offset="1" stop-color="#e86a0c"/></linearGradient>
+    <symbol id="chest" viewBox="0 0 64 64">
+      <rect x="6" y="28" width="52" height="28" rx="4" fill="url(#ld-chest-box)"/>
+      <path d="M6 32c0-13 10-21 26-21s26 8 26 21z" fill="url(#ld-chest-lid)"/>
+      <rect x="6" y="30" width="52" height="4" fill="#0b0b12" opacity=".35"/>
+      <rect x="27" y="26" width="10" height="13" rx="2" fill="#0b0b12"/>
+      <circle cx="32" cy="32" r="2.6" fill="#ffd166"/>
+      <path d="M14 8l2 4 4 2-4 2-2 4-2-4-4-2 4-2zM50 4l1.5 3 3 1.5-3 1.5L50 13l-1.5-3-3-1.5 3-1.5z" fill="#ffd166"/>
+    </symbol>
+  </defs>
+</svg>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Loot Drop home"><svg aria-hidden="true"><use href="#chest"/></svg>Loot Drop</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="/archive/drop/001/">The Drop #1</a></li>
+        <li><a href="/archive/armory/" aria-current="page">Armory</a></li>
+        <li><a href="/archive/respawn/">Respawn</a></li>
+        <li><a href="/">Level Up Makers</a></li>
+        <li><a href="/archive/home/#join">Join The Drop</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="wrap" style="padding-top:16px">
+  <p style="margin:0;padding:12px 14px;border:1px solid #262638;border-radius:10px;background:#171724;color:#ececf3"><strong>Archived Loot Drop page.</strong> The Drop, the Armory, and Respawn are no longer offered. <a href="/">Level Up Makers</a> is the current site.</p>
+</div>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/archive/armory/">The Armory</a> / <a href="/archive/armory/starter-loadout/">Starter Loadout</a> / <span aria-current="page">Prompts</span></nav>
+      <span class="eyebrow">Starter Loadout · Prompts</span>
+      <h1><span class="grad">8 prompts for when your build breaks</span></h1>
+      <p class="tagline">Debugging, refactoring and shipping prompts for any coding agent. Each one assumes you've set up <a href="/archive/armory/starter-loadout/#agents-md">AGENTS.md</a>.</p>
+      <div class="download"><a class="btn btn-ghost" href="/archive/armory/starter-loadout.zip" download>Download all as a zip</a></div>
+    </div>
+  </section>
+  <section class="tight">
+    <div class="wrap prose">
+      <p><strong>How to use them:</strong> start a fresh chat, paste the prompt, replace every <code>[BRACKET]</code>, and paste errors exactly instead of summarizing them.</p>
+      <ol class="toc">
+<li><a href="#01-reproduce-then-fix">Reproduce, then fix</a></li>
+<li><a href="#02-error-log-triage">Error log triage</a></li>
+<li><a href="#03-loop-breaker">Loop breaker</a></li>
+<li><a href="#04-deploy-failure">Deploy failure fix</a></li>
+<li><a href="#05-safe-refactor">Safe refactor</a></li>
+<li><a href="#06-characterization-tests">Tests for code you didn&#x27;t write</a></li>
+<li><a href="#07-pre-ship-review">Pre-ship security and sanity review</a></li>
+<li><a href="#08-session-save">Session save (handoff)</a></li>
+      </ol>
+      <article class="prompt" id="01-reproduce-then-fix">
+        <div class="rarity">Debugging</div>
+        <h2>Reproduce, then fix</h2>
+        <p><strong>Use it when:</strong> Something is broken and you can describe what you expected versus what happened. Use it instead of &quot;fix this&quot;.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-5">Copy</button></div><pre id="code-5">Read AGENTS.md first.
+
+Bug: [what you did] -&gt; [what you expected] -&gt; [what happened instead].
+Error text, if any (copied exactly):
+[paste error or &quot;none&quot;]
+
+Work in this order and don&#x27;t skip ahead:
+1. Reproduce it. Tell me the exact steps or command that shows the bug, and what output proves it&#x27;s happening.
+2. Find the cause. Name the file and line, and explain in 2-3 plain sentences why it happens. If you have more than one theory, list them, most likely first, and say how you ruled the others out.
+3. Fix only the cause. Smallest change that works. No refactors, no new dependencies.
+4. Prove it. Re-run the reproduction and show it now passes. Run lint, type check and tests.
+5. Report: files changed (one line each), how you verified it, and anything you&#x27;re unsure about.
+
+If you can&#x27;t reproduce it, stop after step 1 and tell me what you tried and what extra info you need.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> Agents that patch before reproducing tend to fix a symptom and break something nearby. Forcing a reproduction first gives the agent (and you) proof the fix actually worked.</p>
+      </article><article class="prompt" id="02-error-log-triage">
+        <div class="rarity">Debugging</div>
+        <h2>Error log triage</h2>
+        <p><strong>Use it when:</strong> You have a wall of red text (stack trace, build log, browser console) and don&#x27;t know which line matters.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-6">Copy</button></div><pre id="code-6">Read AGENTS.md first. Don&#x27;t change any code yet.
+
+Here is the full log, unedited:
+```
+[paste the whole log]
+```
+
+1. Quote the one line that is the real root error (not a follow-on error), and explain in plain English what it means.
+2. Point to the file and line in OUR code where it starts (ignore library internals unless the cause really is there).
+3. Give me the 3 most likely causes, most likely first, each with one quick check I can run or you can run to confirm it.
+4. Run those checks yourself if you can, then tell me which cause it is.
+5. Propose a fix and wait for my OK before editing anything.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> Long logs make agents latch onto the last error, which is usually a side effect. Asking for the first real error plus a ranked list of causes with checks turns guessing into a short elimination.</p>
+      </article><article class="prompt" id="03-loop-breaker">
+        <div class="rarity">Debugging</div>
+        <h2>Loop breaker</h2>
+        <p><strong>Use it when:</strong> The agent has &quot;fixed&quot; the same bug two or three times and it keeps coming back, or it keeps undoing its own changes.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-7">Copy</button></div><pre id="code-7">Stop editing. We&#x27;re in a loop.
+
+Before you touch any more code:
+1. List every fix you&#x27;ve tried for this so far, and what happened after each one.
+2. Tell me what those failures prove is NOT the cause.
+3. List assumptions you&#x27;ve been making that you haven&#x27;t actually verified (versions, env vars, which file is really running, cached builds, the data in the database).
+4. Pick the single assumption most likely to be wrong and tell me how to check it with one command or one log line.
+5. Run that check and report what it shows.
+
+Then propose ONE new approach that is different in kind from what you&#x27;ve already tried, not a variation of it. Wait for my OK before you make changes. If you think the honest answer is &quot;I need information I don&#x27;t have&quot;, say exactly what it is.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> Loops usually come from one wrong assumption the agent never re-checks. Making it write down what failed and what it assumed breaks the pattern, and stopping for approval stops it piling more edits on top.</p>
+      </article><article class="prompt" id="04-deploy-failure">
+        <div class="rarity">Shipping</div>
+        <h2>Deploy failure fix</h2>
+        <p><strong>Use it when:</strong> It works on your machine (or in the builder&#x27;s preview) but the deploy on Vercel, Netlify, Cloudflare, Railway or Render fails, or the live site shows a blank page.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-8">Copy</button></div><pre id="code-8">Read AGENTS.md first.
+
+It works locally but fails on [hosting provider].
+Deploy log or live error (unedited):
+```
+[paste]
+```
+
+Check these in order and tell me what you find for each before fixing anything:
+1. Build command, output directory and Node/Python version the host uses vs. what the project needs (package.json engines, .nvmrc, runtime files).
+2. Environment variables: list every one the code reads, and mark which are missing or named differently on the host. Remember that client-side variables often need a prefix (NEXT_PUBLIC_, VITE_, etc.).
+3. Case-sensitive import paths (works on Mac/Windows, fails on Linux).
+4. Code that only works locally: localhost URLs, files written to disk, dev-only dependencies used at runtime.
+5. Lockfile and package manager mismatches.
+
+Then: run the production build locally (`[npm run build]`) and confirm it passes, make the smallest fix, and give me the exact settings I need to change in the host dashboard (if any) as a checklist. Never put secret values in the code or the reply.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> Most &quot;works locally, fails on deploy&quot; bugs fall into the same handful of buckets. A fixed checklist stops the agent rewriting app code when the real fix is a missing env var or a dashboard setting.</p>
+      </article><article class="prompt" id="05-safe-refactor">
+        <div class="rarity">Refactoring</div>
+        <h2>Safe refactor</h2>
+        <p><strong>Use it when:</strong> A file has grown into a monster (500+ lines, copy-pasted blocks) and you want it cleaner without breaking anything.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-9">Copy</button></div><pre id="code-9">Read AGENTS.md first.
+
+Refactor [file or folder]. Goal: [easier to read / split into smaller pieces / remove duplication]. Behavior must not change at all: same inputs, same outputs, same UI.
+
+Rules:
+1. First, tell me how we&#x27;ll know nothing broke. If tests don&#x27;t cover this code, write a few tests that pin down what it does TODAY (including any weird behavior) and get them passing before you refactor.
+2. Give me a plan of small steps. Each step should leave the app working.
+3. Do one step at a time. After each step, run the tests and the type check.
+4. No new features, no bug fixes, no dependency changes, no renaming of anything other files import, unless I approve it. If you spot a bug, list it at the end instead of fixing it.
+5. Finish with a before/after summary: what moved where, and the test results.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> Refactors go wrong when behavior changes sneak in alongside the cleanup. Pinning current behavior with tests first, then moving in small verified steps, makes it reversible at every point.</p>
+      </article><article class="prompt" id="06-characterization-tests">
+        <div class="rarity">Refactoring</div>
+        <h2>Tests for code you didn&#x27;t write</h2>
+        <p><strong>Use it when:</strong> Your AI-built app has zero tests and you&#x27;re scared to change anything. Run this on the most important flow first (signup, checkout, saving data).</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-10">Copy</button></div><pre id="code-10">Read AGENTS.md first.
+
+Add tests for [feature or file, e.g. &quot;the signup flow&quot; or &quot;src/lib/cart.ts&quot;]. Don&#x27;t change any app code.
+
+1. Read the code and list what it currently does as plain-English rules (&quot;If the email is already taken, it shows &#x27;Account exists&#x27;&quot;). Include edge cases: empty input, wrong types, network errors, logged-out users.
+2. Use the test setup we already have ([test framework]). If there is none, suggest the lightest option for our stack and wait for my OK before installing anything.
+3. Write tests that pass against the CURRENT code. If you find behavior that looks like a bug, still test what it does now, mark the test with a &quot;BUG?&quot; comment, and list it for me.
+4. Run the tests and show me the results.
+5. Tell me which important paths are still untested.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> &quot;Characterization&quot; tests record what the code really does, not what it should do, so they catch any change. They&#x27;re the safety net that makes every other prompt in this pack less risky.</p>
+      </article><article class="prompt" id="07-pre-ship-review">
+        <div class="rarity">Shipping</div>
+        <h2>Pre-ship security and sanity review</h2>
+        <p><strong>Use it when:</strong> Before you share the link with real users, or before every launch. Pair it with the pre-deploy checklist in this pack.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-11">Copy</button></div><pre id="code-11">Read AGENTS.md first. This is a review: don&#x27;t change code until I approve a fix list.
+
+Review this app as if it&#x27;s about to get its first 1,000 strangers. Check:
+1. Secrets: any API keys, tokens or passwords in the code, in git history, or sent to the browser? Which env vars are exposed to the client?
+2. Auth: can a logged-out user reach pages or API routes they shouldn&#x27;t? Can user A read or change user B&#x27;s data by changing an ID in the URL or request?
+3. Database: are access rules (e.g. row-level security) on for every table that holds user data?
+4. Input: anywhere user input goes into a query, HTML, a file path or a shell command without validation?
+5. Costs: any endpoint that calls a paid API (AI, email, SMS) with no login or rate limit?
+6. Errors: do error messages leak stack traces or internal details to users?
+7. Basics: 404 page, broken links, forms that fail silently, missing loading or error states.
+
+Output a table: issue, severity (critical / high / medium / low), file and line, and the suggested fix. Critical first. Then wait for my OK on which ones to fix.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> AI builders ship working features fast but rarely check who else can call them. These seven areas cover the mistakes behind most painful launch-day surprises: leaked keys, open data, and surprise API bills.</p>
+      </article><article class="prompt" id="08-session-save">
+        <div class="rarity">Shipping</div>
+        <h2>Session save (handoff)</h2>
+        <p><strong>Use it when:</strong> At the end of every work session, or before switching tools or models. It keeps the next session from starting cold.</p>
+        <div class="codebox"><div class="cap"><span>Prompt · replace every [BRACKET] first</span><button class="copy" type="button" data-target="code-12">Copy</button></div><pre id="code-12">We&#x27;re wrapping up this session. Don&#x27;t change any app code.
+
+Update AGENTS.md:
+1. Under &quot;Known gotchas&quot;, add anything we tripped over today that would trip up the next session (one line each). Don&#x27;t duplicate what&#x27;s already there.
+2. Under &quot;Commands&quot; or &quot;Project map&quot;, fix anything that&#x27;s now out of date.
+3. Under &quot;Progress log&quot;, add one line at the top for today: what got done, and the next step.
+
+Then give me a short handoff note I can paste into a fresh chat:
+- What we were working on and where it stands
+- What&#x27;s verified working vs. not yet verified
+- Open questions and known bugs
+- The exact next step
+
+Show me the AGENTS.md diff before saving it.</pre></div>
+        <p class="muted"><strong>Why it works:</strong> Context dies when a chat ends or you switch tools. Writing it back into AGENTS.md is the &quot;save file&quot; from The Drop #1&#x27;s quest: your next session, or your next tool, picks up where you left off.</p>
+      </article>
+      <p><a href="/archive/armory/starter-loadout/checklist/">Next: the pre-deploy checklist</a></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/"><svg aria-hidden="true" style="width:26px;height:26px"><use href="#chest"/></svg>Loot Drop</a>
+      <p class="disclosure">Some links on Loot Drop are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Affiliate deals and sponsorships never affect our rankings.</p>
+      <p>Paid products are sold through Lemon Squeezy, our merchant of record. Contact: <a href="mailto:thedrop@mail.grokbot.com">thedrop@mail.grokbot.com</a></p>
+      <p>© <span id="yr">2026</span> Loot Drop. All rights reserved.</p>
+    </div>
+    <nav aria-label="Site" class="site-links">
+      <ul>
+        <li><a href="/archive/drop/001/">The Drop #1</a></li>
+        <li><a href="/archive/armory/">The Armory</a></li>
+        <li><a href="/archive/armory/starter-loadout/">Free Starter Loadout</a></li>
+        <li><a href="/archive/respawn/">Respawn</a></li>
+        <li><a href="/">Level Up Makers</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/refunds/">Refund policy</a></li>
+        <li><a href="mailto:thedrop@mail.grokbot.com">Contact</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Social">
+      <ul>
+        <li><a href="https://x.com/alootdrop" rel="noopener">X @alootdrop</a></li>
+        <li><a href="https://discord.gg/37KPM3mthc" target="_blank" rel="noopener" aria-label="Join the Loot Drop Discord">Discord</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
