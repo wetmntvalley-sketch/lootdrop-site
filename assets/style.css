@@ -28,6 +28,8 @@
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:10px;border:0;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s}
   .btn-primary{background:linear-gradient(135deg,var(--legendary),#ff5f1f);color:#140a00;box-shadow:0 6px 24px -6px rgba(255,138,31,.6)}
   .btn-primary:hover{transform:translateY(-1px);color:#140a00;box-shadow:0 10px 30px -6px rgba(255,138,31,.75)}
+  .btn:disabled{opacity:.72;cursor:default}
+  .btn:disabled:hover{transform:none;color:var(--text);border-color:var(--line);box-shadow:none}
   .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
   .btn-ghost:hover{border-color:var(--epic);color:var(--text)}
   .btn-epic{background:var(--epic);color:#fff}
@@ -158,6 +160,7 @@
   /* Pricing and steps */
   .price{font-size:2rem;font-weight:800;margin:4px 0 2px;letter-spacing:-.01em}
   .price small{font-size:.9rem;font-weight:600;color:var(--muted)}
+  .price s{text-decoration:line-through}
   .cards.two{grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto}
   @media (max-width:900px){.cards.two{grid-template-columns:1fr}}
   .steps{list-style:none;counter-reset:step;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
