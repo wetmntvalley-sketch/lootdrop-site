@@ -23,7 +23,7 @@ The homepage is the parent overview. Level 1, the free chapter, is at `/level-1/
 | `404.html` | Not-found page. |
 | `CNAME` | GitHub Pages hostname. |
 
-Paid editions stay marked coming soon. There is no checkout on the site.
+The full manual is an early-bird pre-order on Payhip. The Parent + Student bundle is marked Coming Nov 16 and has no buy link.
 
 ## Local preview
 
