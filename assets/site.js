@@ -38,6 +38,38 @@
     });
   });
 
+  var promo = document.getElementById('home-promo');
+  var soundBtn = document.querySelector('.promo-sound');
+  if (promo) {
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var holdStill = function () {
+      if (!motion.matches) return;
+      promo.removeAttribute('autoplay');
+      promo.pause();
+    };
+    holdStill();
+    if (motion.addEventListener) motion.addEventListener('change', holdStill);
+    var setSoundLabel = function () {
+      if (!soundBtn) return;
+      var on = !promo.muted;
+      soundBtn.textContent = on ? 'Mute' : 'Tap for sound';
+      soundBtn.setAttribute('aria-label', on ? 'Mute the promo clip' : 'Tap for sound');
+    };
+    if (soundBtn) {
+      soundBtn.addEventListener('click', function () {
+        if (promo.muted) {
+          promo.muted = false;
+          var pending = promo.play();
+          if (pending && pending.catch) pending.catch(function () {});
+        } else {
+          promo.muted = true;
+        }
+        setSoundLabel();
+      });
+    }
+    promo.addEventListener('volumechange', setSoundLabel);
+  }
+
   document.querySelectorAll('button.copy[data-target]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var el = document.getElementById(btn.getAttribute('data-target'));
