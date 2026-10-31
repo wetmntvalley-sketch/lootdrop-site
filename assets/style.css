@@ -281,3 +281,31 @@ body.jr.blog .nav ul a[href="/blog/"]{color:var(--jr)}
   .blog-card a{grid-template-columns:92px 1fr;gap:12px;padding:10px}
   .blog-card h2{font-size:1.02rem}
 }
+
+/* Homepage promo clip. Beside the hero copy on wide screens, stacked on small ones. */
+.hero-split{display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;gap:18px;text-align:center}
+.hero-copy{display:contents}
+.hero-intro{order:1;max-width:40rem}
+.promo{order:2}
+.hero-rest{order:3;max-width:40rem}
+.hero-split .tagline{margin-bottom:0}
+.hero-split .sub{margin-bottom:24px}
+.promo{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;max-width:min(100%,400px);margin:4px 0 8px}
+.promo-video{display:block;width:100%;height:auto;aspect-ratio:480 / 848;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);background:#12121c}
+.promo-sound{width:100%;min-height:44px}
+.promo figcaption{text-align:center}
+.promo-caption{margin:0;font-weight:800;letter-spacing:-.01em;color:var(--text)}
+.promo-alt{margin:6px 0 2px;color:var(--muted);font-size:.92rem}
+.promo .btn-primary{width:100%}
+@media (min-width:861px){
+  .hero-split{grid-template-columns:minmax(0,1fr) 320px;justify-items:stretch;align-items:start;column-gap:48px;text-align:left}
+  .hero-copy{display:block;order:0;min-width:0}
+  .hero-intro,.hero-rest{order:0;max-width:none}
+  .promo{order:0;max-width:320px;margin:0;justify-self:end}
+  .hero-split .tagline{margin-bottom:16px}
+  .hero-split .tagline,.hero-split .sub{margin-left:0;margin-right:0}
+  .hero-split .hero-ctas{justify-content:flex-start}
+}
+@media print{
+  body.jr .promo-video,body.jr .promo-sound{display:none!important}
+}
