@@ -14,6 +14,7 @@ The homepage is the parent overview. Level 1, the free chapter, is at `/level-1/
 |---|---|
 | `index.html` | Homepage for parents: learning path, safety, and planned prices. |
 | `level-1/index.html` | Free Level 1 chapter, ready to print. |
+| `blog/` | Blog index and three posts for parents. |
 | `jr/index.html`, `jr/level-1/index.html` | Redirect stubs to `/` and `/level-1/`. |
 | `archive/` | Earlier Loot Drop pages (The Drop, Armory, Respawn, old homepage). `noindex`, and blocked in `robots.txt`. |
 | `terms/`, `privacy/`, `refunds/` | Current policies. Nothing is for sale yet. |
