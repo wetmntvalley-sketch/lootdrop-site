@@ -4,19 +4,19 @@
 
 Level Up Makers publishes one manual: Level Up: Make Your First Game with AI. It is a three-module path. Level Up 1 uses Microsoft MakeCode Arcade. Level 1 is free to read and print. The paperback is $34.99 at https://www.amazon.com/dp/B0HQDMJ24G. The complete PDF is $15 and available now for immediate download at https://payhip.com/b/6KDfn. The Parent + Student bundle is $29 and available now for immediate download at https://payhip.com/b/NsL1H. It includes the unchanged 178-page manual plus separate printables: a 10-page workbook, badge sheets and a certificate, a Hero Card, a Game Idea Sheet, a Playtest Scorecard, a Pixel Grid, a World Map, a Level Plan Grid, a sharing checklist, and a printing and support README. Level Up 2, Real Code Quest, and Level Up 3, Bring Your World to Life, are coming soon, with no price listed yet.
 
-Students invent original characters, then move from blocks to typed code and the Godot engine. Any AI help is typed by a grown-up on the grown-up's own account. These pages have no forms, analytics, or trackers, and they do not collect children's personal information.
+Students invent original characters, then move from blocks to typed code and the Godot engine. Any AI help is typed by a grown-up on the grown-up's own account. These pages do not collect children's personal information. The free Level 1 page, the free Level 1 PDF button, and the Homeschool Classifieds path send a coarse count (event name, source label, and time) to a first-party Cloudflare Pages Function. That count uses no cookies and no third-party tracker, and it does not include an IP address, browser type, name, email, or anything about a child. It is stored in Cloudflare Analytics Engine only when Cloudflare Pages serves the site. levelupmakers.com is answered by GitHub Pages today.
 
 - [Home](https://levelupmakers.com/): The learning path, the Level Up 1 outline, what students make, the safety rules, prices for the first manual, and a Who we are section. Level Up Makers is a grandmother and grandson team. Written for parents.
 - [Review copy](https://levelupmakers.com/review/): Email gate for adult influencers and reviewers. It is for the full digital book, not a Payhip link. The automatic PDF email is not connected yet. Families should use Amazon or Payhip.
 - [The book](https://levelupmakers.com/book/): Paperback on Amazon ($34.99) and the complete PDF on Payhip ($15, immediate download).
 - [Printables](https://levelupmakers.com/printables/): Live page listing the 10-page workbook, badge sheets and certificate, Hero Card, Game Idea Sheet, Playtest Scorecard, Pixel Grid, World Map, Level Plan Grid, sharing checklist, and printing and support notes. Those files come in the $29 bundle download at https://payhip.com/b/NsL1H. They are not separate files on the page.
-- [Level 1: Spark](https://levelupmakers.com/level-1/): Free chapter. Idea Forge, an original hero, and a tiny collect-it game in MakeCode Arcade, plus prompts a grown-up can paste into their own AI chat.
+- [Level 1: Spark](https://levelupmakers.com/level-1/): Free chapter. Idea Forge, an original hero, and a tiny collect-it game in MakeCode Arcade, plus prompts a grown-up can paste into their own AI chat. The printable file is the free chapter only: https://levelupmakers.com/level-1/level-1-spark.pdf. It is not the 178-page Payhip manual.
 - [Blog](https://levelupmakers.com/blog/): Parent guides. Includes [MakeCode Arcade vs Scratch](https://levelupmakers.com/blog/makecode-arcade-vs-scratch/) for choosing a first game tool at ages 9–13.
 
 ## Policies
 
 - [Terms of service](https://levelupmakers.com/terms/): Rules for using the site. Level 1 is free. The paperback is sold on Amazon. The complete PDF is $15 and available now through Payhip.
-- [Privacy policy](https://levelupmakers.com/privacy/): The public pages have no forms or trackers. We don't collect children's personal information. Amazon and Payhip run checkout.
+- [Privacy policy](https://levelupmakers.com/privacy/): The public pages have no forms. A coarse Level 1 count uses no cookies and no third-party tracker. We don't collect children's personal information. Amazon and Payhip run checkout.
 - [Refund policy](https://levelupmakers.com/refunds/): How to ask about a PDF order. Amazon handles paperback returns. Earlier Loot Drop orders still have a way to ask.
 - [Contact](https://levelupmakers.com/contact/): hello@levelupmakers.com. No form. Copy the address or use Email us.
 

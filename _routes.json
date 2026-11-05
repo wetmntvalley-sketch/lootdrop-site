@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": [
+    "/api/measure",
+    "/api/measure/",
+    "/from/homeschool-classifieds",
+    "/from/homeschool-classifieds/"
+  ],
+  "exclude": []
+}
