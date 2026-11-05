@@ -17,17 +17,17 @@ The homepage is the parent overview. Level 1, the free chapter, is at `/level-1/
 | `review/index.html` | Email gate for adult reviewers. The PDF delivery hook is not connected yet. |
 | `printables/index.html` | Printables landing. The bundle is Coming Nov 16 and is not for sale yet. |
 | `level-1/index.html` | Free Level 1 chapter, ready to print. |
-| `blog/` | Blog index and three posts for parents. |
+| `blog/` | Blog index and four posts for parents. |
 | `jr/index.html`, `jr/level-1/index.html` | Redirect stubs to `/` and `/level-1/`. |
 | `archive/` | Earlier Loot Drop pages (The Drop, Armory, Respawn, old homepage). `noindex`, and blocked in `robots.txt`. |
-| `terms/`, `privacy/`, `refunds/` | Current policies. Nothing is for sale yet. |
+| `terms/`, `privacy/`, `refunds/` | Current policies. |
 | `llms.txt` | Plain-language summary for AI assistants. |
 | `robots.txt`, `sitemap.xml` | Crawling rules and the public URL list for levelupmakers.com. |
 | `assets/style.css`, `assets/site.js` | Shared styles and the footer year plus copy buttons. |
 | `404.html` | Not-found page. |
 | `CNAME` | GitHub Pages hostname. |
 
-The paperback is $34.99 on Amazon: https://www.amazon.com/dp/B0HQDMJ24G. The PDF is an early-bird pre-order on Payhip: https://payhip.com/b/6KDfn. The Parent + Student bundle is marked Coming Nov 16 and has no buy link.
+The paperback is $34.99 on Amazon: https://www.amazon.com/dp/B0HQDMJ24G. The complete PDF is $15 and available now for immediate download on Payhip: https://payhip.com/b/6KDfn. The Parent + Student bundle is marked Coming Nov 16 and has no buy link.
 
 ## Local preview
 
