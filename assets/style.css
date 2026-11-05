@@ -302,6 +302,8 @@ body.jr.blog .nav ul a[href="/blog/"]{color:var(--jr)}
 .promo-caption{margin:0;font-weight:800;letter-spacing:-.01em;color:var(--text)}
 .promo-alt{margin:0;color:var(--muted);font-size:.92rem}
 .promo .btn{width:100%}
+.promo-ctas{display:flex;flex-direction:column;gap:8px}
+.promo-ctas .btn{width:100%;min-height:44px;padding:11px 12px;line-height:1.2;text-align:center}
 @media (min-width:861px){
   .hero-split{grid-template-columns:minmax(0,1fr) 320px;justify-items:stretch;align-items:start;column-gap:48px;text-align:left}
   .hero-copy{display:block;order:0;min-width:0}
