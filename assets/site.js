@@ -3,10 +3,36 @@
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  document.querySelectorAll('form.js-signup, form.js-intake').forEach(function (form) {
+  document.querySelectorAll('form.js-signup, form.js-intake, form.js-review').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       var msg = form.querySelector('.form-msg');
       var action = form.getAttribute('action') || '';
+      if (form.classList.contains('js-review')) {
+        e.preventDefault();
+        var trap = form.querySelector('[name="bot-field"]');
+        if (trap && trap.value) return;
+        var emailInput = form.querySelector('input[type="email"]');
+        var nameInput = form.querySelector('input[name="name"]');
+        var email = emailInput ? emailInput.value.trim() : '';
+        var name = nameInput ? nameInput.value.trim() : '';
+        if (!email) return;
+        var next = document.getElementById('review-next');
+        var mail = document.getElementById('review-mail');
+        var body = 'Please send the full digital book (reviewer copy) to ' + email + '.';
+        if (name) body = 'Name: ' + name + '\n' + body;
+        if (mail) {
+          mail.href = 'mailto:hello@levelupmakers.com?subject=' + encodeURIComponent('Review copy') + '&body=' + encodeURIComponent(body);
+        }
+        if (next) {
+          next.hidden = false;
+          if (next.focus) next.focus();
+        }
+        if (msg) {
+          msg.className = 'form-msg ok';
+          msg.textContent = 'The automatic download is not connected yet. Use the email link below and we will send the full digital book.';
+        }
+        return;
+      }
       if (action.indexOf('YOUR_') !== -1) {
         e.preventDefault();
         msg.className = 'form-msg warn';

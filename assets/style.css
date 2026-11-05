@@ -63,6 +63,10 @@
   .card ul{margin:0 0 20px;padding-left:18px;color:var(--muted)}
   .card ul li{margin:4px 0}
   .card .cta{margin-top:auto}
+  .buy-actions{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+  .card .buy-actions .cta{margin-top:0}
+  .buy-actions .btn{width:100%}
+  .prose .hero-ctas{margin:18px 0 22px}
   .badge{position:absolute;top:18px;right:18px;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.1em;background:rgba(168,85,247,.15);color:#d8b4fe;border:1px solid rgba(168,85,247,.45);padding:4px 9px;border-radius:999px}
   .tiers{display:flex;gap:6px;margin:4px 0 16px}
   .tier{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;font-weight:800;color:#0b0b12}
@@ -294,10 +298,10 @@ body.jr.blog .nav ul a[href="/blog/"]{color:var(--jr)}
 .promo{display:flex;flex-direction:column;align-items:stretch;gap:12px;width:100%;max-width:min(100%,400px);margin:4px 0 8px}
 .promo-video{display:block;width:100%;height:auto;aspect-ratio:480 / 848;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line);background:#12121c}
 .promo-sound{width:100%;min-height:44px}
-.promo figcaption{text-align:center}
+.promo figcaption{display:flex;flex-direction:column;gap:8px;text-align:center}
 .promo-caption{margin:0;font-weight:800;letter-spacing:-.01em;color:var(--text)}
-.promo-alt{margin:6px 0 2px;color:var(--muted);font-size:.92rem}
-.promo .btn-primary{width:100%}
+.promo-alt{margin:0;color:var(--muted);font-size:.92rem}
+.promo .btn{width:100%}
 @media (min-width:861px){
   .hero-split{grid-template-columns:minmax(0,1fr) 320px;justify-items:stretch;align-items:start;column-gap:48px;text-align:left}
   .hero-copy{display:block;order:0;min-width:0}
