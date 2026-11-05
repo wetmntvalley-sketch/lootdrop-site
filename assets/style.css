@@ -314,3 +314,7 @@ body.jr.blog .nav ul a[href="/blog/"]{color:var(--jr)}
 @media print{
   body.jr .promo-video,body.jr .promo-sound{display:none!important}
 }
+
+/* Contact address: visible, selectable, and copyable without a mail app. */
+.contact-address{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:8px 0 18px;padding:14px 16px;background:#0e0e17;border:1px solid var(--line);border-radius:12px}
+.contact-address span{font-family:var(--mono);font-size:clamp(1rem,2.4vw,1.2rem);color:var(--text);user-select:all}

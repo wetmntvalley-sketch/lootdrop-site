@@ -21,6 +21,7 @@ The homepage is the parent overview. Level 1, the free chapter, is at `/level-1/
 | `jr/index.html`, `jr/level-1/index.html` | Redirect stubs to `/` and `/level-1/`. |
 | `archive/` | Earlier Loot Drop pages (The Drop, Armory, Respawn, old homepage). `noindex`, and blocked in `robots.txt`. |
 | `terms/`, `privacy/`, `refunds/` | Current policies. |
+| `contact/` | Contact page with a copyable email address. No form. |
 | `llms.txt` | Plain-language summary for AI assistants. |
 | `robots.txt`, `sitemap.xml` | Crawling rules and the public URL list for levelupmakers.com. |
 | `assets/style.css`, `assets/site.js` | Shared styles and the footer year plus copy buttons. |
