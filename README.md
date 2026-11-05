@@ -28,7 +28,7 @@ The homepage is the parent overview. Level 1, the free chapter, is at `/level-1/
 | `404.html` | Not-found page. |
 | `CNAME` | GitHub Pages hostname. |
 
-The paperback is $34.99 on Amazon: https://www.amazon.com/dp/B0HQDMJ24G. The complete PDF is $15 and available now for immediate download on Payhip: https://payhip.com/b/6KDfn. The Parent + Student bundle is $29 and available now. Its buy link is the placeholder BUNDLE_PAYHIP_URL_PENDING until the real Payhip URL replaces it.
+The paperback is $34.99 on Amazon: https://www.amazon.com/dp/B0HQDMJ24G. The complete PDF is $15 and available now for immediate download on Payhip: https://payhip.com/b/6KDfn. The Parent + Student bundle is $29 and available now for immediate download on Payhip: https://payhip.com/b/NsL1H.
 
 ## Local preview
 
