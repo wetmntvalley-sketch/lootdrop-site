@@ -3,49 +3,73 @@
 User-agent: *
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: GPTBot
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 User-agent: CCBot
 Allow: /
 Disallow: /archive/
+Disallow: /api/
+Disallow: /from/
 
 Sitemap: https://levelupmakers.com/sitemap.xml

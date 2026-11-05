@@ -118,4 +118,38 @@
     try { document.execCommand('copy'); } catch (e) {}
     document.body.removeChild(ta);
   }
+
+  // Coarse first-party counts. The server keeps an event name and a source label.
+  var measureEvents = { level1_visit: 1, level1_pdf_click: 1 };
+  var measureSource = 'site';
+  var visitEvent = document.body && document.body.getAttribute('data-measure-visit');
+  if (visitEvent === 'level1_visit') {
+    if ((location.hash || '').replace(/^#/, '') === 'homeschool-classifieds') {
+      measureSource = 'homeschool-classifieds';
+      if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+    }
+    postMeasure(visitEvent);
+  }
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('[data-measure-event]') : null;
+    if (!link) return;
+    postMeasure(link.getAttribute('data-measure-event'));
+  });
+  function postMeasure(eventName) {
+    if (!measureEvents[eventName]) return;
+    var body = JSON.stringify({ event: eventName, source: measureSource });
+    try {
+      if (navigator.sendBeacon) {
+        var blob = new Blob([body], { type: 'application/json' });
+        if (navigator.sendBeacon('/api/measure', blob)) return;
+      }
+    } catch (err) {}
+    if (!window.fetch) return;
+    fetch('/api/measure', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: body,
+      keepalive: true
+    }).catch(function () {});
+  }
 })();

@@ -1,0 +1,13 @@
+{
+  // Local development only. pages_build_output_dir is omitted on purpose so this
+  // file does not become the production Pages configuration on the next deploy.
+  // Add the Analytics Engine binding in the Pages dashboard. See MEASUREMENT.md.
+  "name": "levelupmakers",
+  "compatibility_date": "2026-11-05",
+  "analytics_engine_datasets": [
+    {
+      "binding": "LEVEL1_EVENTS",
+      "dataset": "level1_events"
+    }
+  ]
+}
