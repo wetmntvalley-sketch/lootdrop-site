@@ -2,18 +2,21 @@
 
 > A parent-run path for ages 9–14. Students make a first game, then move into real code and the Godot engine. A grown-up runs any AI help.
 
-Level Up Makers publishes one manual: Level Up: Make Your First Game with AI. It is a three-module path. Level Up 1 uses Microsoft MakeCode Arcade. Level 1 is free to read and print. The full manual is $15 on early-bird pre-order (regular $19) at https://payhip.com/b/6KDfn. You get Level 1 instantly. The full manual is delivered by Monday, November 16, 2026. The parent-and-student bundle is $29 and is not on sale yet (Coming Nov 16). Level Up 2, Real Code Quest, and Level Up 3, Bring Your World to Life, are coming soon, with no price listed yet.
+Level Up Makers publishes one manual: Level Up: Make Your First Game with AI. It is a three-module path. Level Up 1 uses Microsoft MakeCode Arcade. Level 1 is free to read and print. The paperback is $34.99 at https://www.amazon.com/dp/B0HQDMJ24G. The PDF is $15 on early-bird pre-order (regular $19) at https://payhip.com/b/6KDfn. You get Level 1 of the PDF instantly. The rest of the PDF is delivered by Monday, November 16, 2026. The parent-and-student bundle, including printables, is $29 and is not on sale yet (Coming Nov 16). Level Up 2, Real Code Quest, and Level Up 3, Bring Your World to Life, are coming soon, with no price listed yet.
 
 Students invent original characters, then move from blocks to typed code and the Godot engine. Any AI help is typed by a grown-up on the grown-up's own account. These pages have no forms, analytics, or trackers, and they do not collect children's personal information.
 
-- [Home](https://levelupmakers.com/): The learning path, the Level Up 1 outline, what students make, the safety rules, and planned prices for the first manual. Written for parents.
+- [Home](https://levelupmakers.com/): The learning path, the Level Up 1 outline, what students make, the safety rules, prices for the first manual, and a Who we are section. Level Up Makers is a grandmother and grandson team. Written for parents.
+- [Review copy](https://levelupmakers.com/review/): Email gate for adult influencers and reviewers. It is for the full digital book, not a Payhip link. The automatic PDF email is not connected yet. Families should use Amazon or Payhip.
+- [The book](https://levelupmakers.com/book/): Paperback on Amazon ($34.99) and the PDF pre-order on Payhip ($15 early bird, regular $19).
+- [Printables](https://levelupmakers.com/printables/): Workbook pages in the Parent + Student bundle. Coming Nov 16. Not for sale yet.
 - [Level 1: Spark](https://levelupmakers.com/level-1/): Free chapter. Idea Forge, an original hero, and a tiny collect-it game in MakeCode Arcade, plus prompts a grown-up can paste into their own AI chat.
 
 ## Policies
 
-- [Terms of service](https://levelupmakers.com/terms/): Rules for using the site. Level 1 is free. The full manual is an early-bird pre-order through Payhip.
-- [Privacy policy](https://levelupmakers.com/privacy/): The public pages have no forms or trackers. We don't collect children's personal information.
-- [Refund policy](https://levelupmakers.com/refunds/): How to ask about a manual pre-order. Earlier Loot Drop orders still have a way to ask.
+- [Terms of service](https://levelupmakers.com/terms/): Rules for using the site. Level 1 is free. The paperback is sold on Amazon. The PDF is an early-bird pre-order through Payhip.
+- [Privacy policy](https://levelupmakers.com/privacy/): The public pages have no forms or trackers. We don't collect children's personal information. Amazon and Payhip run checkout.
+- [Refund policy](https://levelupmakers.com/refunds/): How to ask about a PDF pre-order. Amazon handles paperback returns. Earlier Loot Drop orders still have a way to ask.
 - Contact: hello@levelupmakers.com
 
 ## Earlier pages
