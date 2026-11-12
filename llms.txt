@@ -11,7 +11,7 @@ Students invent original characters, then move from blocks to typed code and the
 - [The book](https://levelupmakers.com/book/): Paperback on Amazon ($34.99) and the complete PDF on Payhip ($15, immediate download).
 - [Printables](https://levelupmakers.com/printables/): Live page listing the 10-page workbook, badge sheets and certificate, Hero Card, Game Idea Sheet, Playtest Scorecard, Pixel Grid, World Map, Level Plan Grid, sharing checklist, and printing and support notes. Those files come in the $29 bundle download at https://payhip.com/b/NsL1H. They are not separate files on the page.
 - [Level 1: Spark](https://levelupmakers.com/level-1/): Free chapter. Idea Forge, an original hero, and a tiny collect-it game in MakeCode Arcade, plus prompts a grown-up can paste into their own AI chat. The printable file is the free chapter only: https://levelupmakers.com/level-1/level-1-spark.pdf. It is not the 178-page Payhip manual.
-- [Blog](https://levelupmakers.com/blog/): Parent guides. Includes [MakeCode Arcade vs Scratch](https://levelupmakers.com/blog/makecode-arcade-vs-scratch/) for choosing a first game tool at ages 9–13.
+- [Blog](https://levelupmakers.com/blog/): Parent guides. Includes [A Simple Homeschool Coding Plan for Ages 9–12](https://levelupmakers.com/blog/homeschool-coding-curriculum-makecode-arcade/) for a 10-week MakeCode Arcade plan, and [MakeCode Arcade vs Scratch](https://levelupmakers.com/blog/makecode-arcade-vs-scratch/) for choosing a first game tool at ages 9–13.
 
 ## Policies
 

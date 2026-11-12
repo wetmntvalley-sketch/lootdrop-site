@@ -23,7 +23,7 @@ A coarse Level 1 count is described in `MEASUREMENT.md`. It runs as a Cloudflare
 | `from/homeschool-classifieds/` | Classified-ad path. Opens the free chapter. |
 | `functions/` | Pages Functions for the coarse count. See `MEASUREMENT.md`. |
 | `MEASUREMENT.md` | One-time Cloudflare binding setup and how to read totals. |
-| `blog/` | Blog index and four posts for parents. |
+| `blog/` | Blog index and five posts for parents. |
 | `jr/index.html`, `jr/level-1/index.html` | Redirect stubs to `/` and `/level-1/`. |
 | `archive/` | Earlier Loot Drop pages (The Drop, Armory, Respawn, old homepage). `noindex`, and blocked in `robots.txt`. |
 | `terms/`, `privacy/`, `refunds/` | Current policies. |
