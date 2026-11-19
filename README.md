@@ -20,6 +20,8 @@ A coarse Level 1 count is described in `MEASUREMENT.md`. It runs as a Cloudflare
 | `printables/index.html` | Live page listing the printables in the $29 Parent + Student bundle. The worksheet files are in the bundle download, not on this page. |
 | `level-1/index.html` | Free Level 1 chapter, ready to print. |
 | `level-1/level-1-spark.pdf` | Printable PDF of that same chapter. Not the 178-page manual. |
+| `star-catcher/index.html` | Free Star Catcher practice page, with steps to import the cartridge into MakeCode Arcade. |
+| `downloads/star-catcher-practice.png` | MakeCode Arcade PNG cartridge for that practice game. |
 | `from/homeschool-classifieds/` | Classified-ad path. Opens the free chapter. |
 | `functions/` | Pages Functions for the coarse count. See `MEASUREMENT.md`. |
 | `MEASUREMENT.md` | One-time Cloudflare binding setup and how to read totals. |

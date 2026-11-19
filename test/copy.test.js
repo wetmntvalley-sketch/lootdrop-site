@@ -55,6 +55,29 @@ test("funding page is cautious and listed for parents", () => {
   }
 });
 
+test("star catcher practice file is a free download with import steps", () => {
+  const page = read("star-catcher/index.html");
+  const body = page.split("<footer>")[0];
+  const sitemap = read("sitemap.xml");
+  const home = read("index.html");
+  const png = readFileSync("downloads/star-catcher-practice.png");
+  assert.match(page, /href="\/downloads\/star-catcher-practice\.png" download="star-catcher-practice\.png"/);
+  assert.match(page, /Import File/);
+  assert.match(page, /arcade\.makecode\.com/);
+  assert.match(page, /Level Up 2: Real Code Quest/);
+  assert.match(page, /drag the PNG onto the MakeCode editor/);
+  assert.equal(body.includes("$"), false);
+  assert.equal(body.includes("grandmother"), false);
+  assert.equal(body.includes("grandson"), false);
+  assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/star-catcher\//);
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/downloads\/star-catcher-practice\.png/);
+  assert.match(home, /href="\/star-catcher\/"/);
+  for (const path of ["index.html", "level-1/index.html", "book/index.html", "404.html"]) {
+    assert.match(read(path), /href="\/star-catcher\/">Star Catcher</, path);
+  }
+});
+
 test("classified link is a path to the free chapter and is not in the sitemap", () => {
   const ad = read("from/homeschool-classifieds/index.html");
   const sitemap = read("sitemap.xml");
