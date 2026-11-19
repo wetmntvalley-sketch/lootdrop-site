@@ -29,6 +29,32 @@ test("free Level 1 PDF is the chapter file, not the Payhip manual", () => {
   assert.equal(lesson.includes('href="https://payhip.com/b/6KDfn" download'), false);
 });
 
+test("funding page is cautious and listed for parents", () => {
+  const page = read("funding/index.html");
+  const sitemap = read("sitemap.xml");
+  const llms = read("llms.txt");
+  const book = read("book/index.html");
+  const home = read("index.html");
+  assert.match(page, /FAQPage/);
+  assert.match(page, /can't guarantee eligibility/);
+  assert.match(page, /178 pages/);
+  assert.match(page, /10 levels/);
+  assert.match(page, /ages 9–13/);
+  assert.match(page, /https:\/\/www\.amazon\.com\/dp\/B0HQDMJ24G/);
+  assert.match(page, /https:\/\/payhip\.com\/b\/6KDfn/);
+  assert.match(page, /https:\/\/payhip\.com\/b\/NsL1H/);
+  assert.match(page, /https:\/\/levelupmakers\.com\/level-1\//);
+  assert.equal(page.includes("grandmother"), false);
+  assert.equal(page.includes("grandson"), false);
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/funding\//);
+  assert.match(llms, /https:\/\/levelupmakers\.com\/funding\//);
+  assert.match(book, /href="\/funding\/"/);
+  assert.match(home, /href="\/funding\/"/);
+  for (const path of ["index.html", "book/index.html", "contact/index.html", "404.html"]) {
+    assert.match(read(path), /href="\/funding\/">ESA or charter funds</, path);
+  }
+});
+
 test("classified link is a path to the free chapter and is not in the sitemap", () => {
   const ad = read("from/homeschool-classifieds/index.html");
   const sitemap = read("sitemap.xml");
