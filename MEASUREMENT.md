@@ -43,7 +43,9 @@ The browser sends two fields: `event` and `source`. The Worker stores those two 
 |---|---|---|
 | `page_visit` | A short label, below | A public page that loads `/assets/measure.js` finishes loading on levelupmakers.com. |
 | `level1_visit` | The same label as that page | The browser loads `/level-1/`. |
-| `level1_pdf_click` | The same label as that page | A click on **Download the free Level 1 PDF**. The file URL is unchanged: `/level-1/level-1-spark.pdf`. |
+| `level1_pdf_click` | The same label as that page | A click on the first book's **Download the free Level 1 PDF**. The file URL is unchanged: `/level-1/level-1-spark.pdf`. |
+| `real_code_quest_level1_pdf_click` | The same label as that page | A click on Real Code Quest's free Level 1. The file URL is `/real-code-quest/real-code-quest-level-1.pdf`. |
+| `pocket_games_level1_pdf_click` | The same label as that page | A click on Pocket Games' free Level 1. The file URL is `/pocket-games/pocket-games-level-1.pdf`. |
 | `notify_click` | The same label as that page | A click on a coming-soon **Get notified**, **Email us**, or notify **contact page** link. |
 | `campaign_visit` | `homeschool-classifieds` | Only if the old Pages Function runs. GitHub Pages does not run it. Use `page_visit` with that source instead. |
 

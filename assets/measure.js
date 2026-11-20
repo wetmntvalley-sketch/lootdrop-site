@@ -1,4 +1,4 @@
-import { sourceFromSignals } from "/functions/_shared.js";
+import { PUBLIC_EVENTS, sourceFromSignals } from "/functions/_shared.js";
 
 // Public address of the counter Worker. Not a secret.
 // The workers.dev subdomain must be exactly "levelupmakers". See MEASUREMENT.md.
@@ -84,7 +84,7 @@ if (productionHost()) {
     var link = e.target && e.target.closest ? e.target.closest("[data-measure-event]") : null;
     if (!link) return;
     var eventName = link.getAttribute("data-measure-event");
-    if (eventName !== "level1_pdf_click" && eventName !== "notify_click") return;
+    if (!PUBLIC_EVENTS.has(eventName) || eventName === "page_visit" || eventName === "level1_visit") return;
     postMeasure(eventName, measureSource);
   });
 }

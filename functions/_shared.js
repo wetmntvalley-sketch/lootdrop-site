@@ -7,6 +7,8 @@ export const PUBLIC_EVENTS = new Set([
   "page_visit",
   "level1_visit",
   "level1_pdf_click",
+  "real_code_quest_level1_pdf_click",
+  "pocket_games_level1_pdf_click",
   "notify_click",
 ]);
 export const SOURCES = new Set([

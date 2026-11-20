@@ -60,6 +60,20 @@ test("stores a Level 1 visit as event name and source only", async () => {
   assert.equal(JSON.stringify(points).includes("child@example.com"), false);
 });
 
+test("coming soon level 1 pdf clicks use their own event names", async () => {
+  const { env, points } = recorder();
+  for (const event of ["real_code_quest_level1_pdf_click", "pocket_games_level1_pdf_click"]) {
+    const body = { event, source: "homeschool-classifieds" };
+    assert.ok(JSON.stringify(body).length <= 160, event);
+    const response = await measure(context(post("https://levelupmakers.com/api/measure", body), env));
+    assert.equal(response.status, 204, event);
+  }
+  assert.deepEqual(points.map((point) => point.blobs[0]), [
+    "real_code_quest_level1_pdf_click",
+    "pocket_games_level1_pdf_click",
+  ]);
+});
+
 test("stores a classified-ad PDF click source", async () => {
   const { env, points } = recorder();
   const response = await measure(context(post("http://127.0.0.1:8788/api/measure", {
@@ -302,6 +316,14 @@ test("coming soon notify links and the counter script are on the public pages", 
     assert.match(html, /data-measure-event="notify_click"/, path);
     assert.match(html, /data-measure-event="level1_pdf_click"/, path);
   }
+  const quest = readFileSync("real-code-quest/index.html", "utf8");
+  const pocket = readFileSync("pocket-games/index.html", "utf8");
+  assert.match(quest, /href="\/real-code-quest\/real-code-quest-level-1\.pdf"/);
+  assert.match(quest, /data-measure-event="real_code_quest_level1_pdf_click"/);
+  assert.match(pocket, /href="\/pocket-games\/pocket-games-level-1\.pdf"/);
+  assert.match(pocket, /data-measure-event="pocket_games_level1_pdf_click"/);
+  assert.match(readFileSync("sitemap.xml", "utf8"), /real-code-quest-level-1\.pdf/);
+  assert.match(readFileSync("sitemap.xml", "utf8"), /pocket-games-level-1\.pdf/);
   const facebook = readFileSync("from/facebook/index.html", "utf8");
   assert.match(facebook, /\/\?from=facebook/);
   assert.match(facebook, /noindex/);
