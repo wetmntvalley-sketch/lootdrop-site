@@ -1,0 +1,24 @@
+{
+  // Counter only. The website stays on GitHub Pages. Deploy with:
+  // npx wrangler deploy --config wrangler.worker.jsonc
+  // Public URL: https://levelupmakers-count.wetmntvalley.workers.dev/measure
+  // The account workers.dev subdomain is wetmntvalley. Do not rename it.
+  // CORS still allows https://levelupmakers.com. See MEASUREMENT.md.
+  "name": "levelupmakers-count",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  },
+  "analytics_engine_datasets": [
+    {
+      "binding": "LEVEL1_EVENTS",
+      "dataset": "level1_events"
+    }
+  ]
+}

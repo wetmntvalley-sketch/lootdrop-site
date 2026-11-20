@@ -26,7 +26,18 @@ test("free Level 1 PDF is the chapter file, not the Payhip manual", () => {
   const lesson = read("level-1/index.html");
   assert.match(lesson, /data-measure-visit="level1_visit"/);
   assert.match(lesson, /not the 178-page manual/);
+  assert.match(lesson, /href="https:\/\/payhip\.com\/b\/tlxyB"/);
+  assert.match(lesson, /get it by email from our shop/);
   assert.equal(lesson.includes('href="https://payhip.com/b/6KDfn" download'), false);
+  for (const path of [
+    "real-code-quest/real-code-quest-level-1.pdf",
+    "pocket-games/pocket-games-level-1.pdf",
+    "level-1/level-1-spark.pdf",
+  ]) {
+    const bytes = readFileSync(path);
+    assert.equal(bytes.subarray(0, 5).toString(), "%PDF-", path);
+    assert.ok(bytes.length > 1000, path);
+  }
 });
 
 test("funding page is cautious and listed for parents", () => {
@@ -73,9 +84,58 @@ test("star catcher practice file is a free download with import steps", () => {
   assert.match(sitemap, /https:\/\/levelupmakers\.com\/star-catcher\//);
   assert.match(sitemap, /https:\/\/levelupmakers\.com\/downloads\/star-catcher-practice\.png/);
   assert.match(home, /href="\/star-catcher\/"/);
-  for (const path of ["index.html", "level-1/index.html", "book/index.html", "404.html"]) {
+  for (const path of ["index.html", "level-1/index.html", "book/index.html", "404.html", "real-code-quest/index.html", "pocket-games/index.html"]) {
     assert.match(read(path), /href="\/star-catcher\/">Star Catcher</, path);
   }
+});
+
+test("coming soon books are listed and link the Star Catcher practice file", () => {
+  const quest = read("real-code-quest/index.html");
+  const pocket = read("pocket-games/index.html");
+  const home = read("index.html");
+  const book = read("book/index.html");
+  const sitemap = read("sitemap.xml");
+  const llms = read("llms.txt");
+  for (const html of [quest, pocket]) {
+    assert.match(html, /Coming soon/);
+    assert.match(html, /href="\/level-1\/"/);
+    assert.match(html, /href="\/level-1\/level-1-spark\.pdf"/);
+    assert.match(html, /data-measure-event="level1_pdf_click"/);
+    assert.match(html, /hello@levelupmakers\.com/);
+    assert.match(html, /href="\/contact\/"/);
+    assert.match(html, /href="\/star-catcher\/"/);
+    assert.equal(html.includes("<form"), false);
+    assert.equal(html.includes("<video"), false);
+    assert.equal(html.includes("grandmother"), false);
+    assert.equal(html.includes("grandson"), false);
+    assert.equal(html.includes("level-up-promo"), false);
+  }
+  assert.match(quest, /\$19/);
+  assert.match(quest, /\$34\.99/);
+  assert.match(quest, /Godot 4/);
+  assert.match(quest, /GDScript/);
+  assert.match(quest, /Chromebook/);
+  assert.match(quest, /JavaScript/);
+  assert.match(quest, /Python/);
+  assert.match(quest, /Star Catcher/);
+  assert.match(quest, /not for sale yet/i);
+  assert.match(pocket, /GB Studio/);
+  assert.match(pocket, /Price coming soon/);
+  assert.match(pocket, /Windows, Mac, or Linux/);
+  assert.match(pocket, /ten levels/i);
+  assert.match(home, /href="\/real-code-quest\/"/);
+  assert.match(home, /href="\/pocket-games\/"/);
+  assert.match(home, /href="\/star-catcher\/"/);
+  assert.match(book, /href="\/real-code-quest\/"/);
+  assert.match(book, /href="\/pocket-games\/"/);
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/real-code-quest\//);
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/pocket-games\//);
+  assert.match(llms, /https:\/\/levelupmakers\.com\/real-code-quest\//);
+  assert.match(llms, /https:\/\/levelupmakers\.com\/pocket-games\//);
+  assert.match(llms, /https:\/\/levelupmakers\.com\/star-catcher\//);
+  assert.equal(llms.includes("That file is not on this site yet"), false);
+  assert.equal(read("terms/index.html").includes("Level Up 2 and Level Up 3 are coming soon, and they do not have prices yet."), false);
+  assert.equal(read("refunds/index.html").includes("Level Up 2 and Level Up 3 do not have prices yet."), false);
 });
 
 test("classified link is a path to the free chapter and is not in the sitemap", () => {
