@@ -7,6 +7,8 @@ import {
 } from "../functions/_shared.js";
 
 // Public counter for the GitHub Pages site. The website stays on GitHub Pages.
+// Served at https://levelupmakers-count.wetmntvalley.workers.dev/measure.
+// Counts are accepted only from the public site origins below.
 // This Worker only stores an allowlisted event name and source label.
 
 const SITE_ORIGINS = new Set([
