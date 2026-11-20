@@ -344,6 +344,9 @@ body.jr.blog .nav ul a[href="/blog/"]{color:var(--jr)}
 .blog-post .page-hero h1{font-size:clamp(1.65rem,4.2vw,2.45rem);max-width:20em;margin-left:auto;margin-right:auto}
 .post-cover{margin:0 0 8px}
 .post-cover img{display:block;width:100%;max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:#241447}
+.cartridge{max-width:512px;margin:0 auto 8px}
+.cartridge img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:#000}
+.cartridge figcaption{color:var(--muted);font-size:.9rem;margin-top:8px}
 @media (max-width:560px){
   .blog-card a{grid-template-columns:92px 1fr;gap:12px;padding:10px}
   .blog-card h2{font-size:1.02rem}

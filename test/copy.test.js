@@ -66,7 +66,30 @@ test("funding page is cautious and listed for parents", () => {
   }
 });
 
-test("coming soon books are listed and do not link Star Catcher before that page exists", () => {
+test("star catcher practice file is a free download with import steps", () => {
+  const page = read("star-catcher/index.html");
+  const body = page.split("<footer>")[0];
+  const sitemap = read("sitemap.xml");
+  const home = read("index.html");
+  const png = readFileSync("downloads/star-catcher-practice.png");
+  assert.match(page, /href="\/downloads\/star-catcher-practice\.png" download="star-catcher-practice\.png"/);
+  assert.match(page, /Import File/);
+  assert.match(page, /arcade\.makecode\.com/);
+  assert.match(page, /Level Up 2: Real Code Quest/);
+  assert.match(page, /drag the PNG onto the MakeCode editor/);
+  assert.equal(body.includes("$"), false);
+  assert.equal(body.includes("grandmother"), false);
+  assert.equal(body.includes("grandson"), false);
+  assert.equal(png.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/star-catcher\//);
+  assert.match(sitemap, /https:\/\/levelupmakers\.com\/downloads\/star-catcher-practice\.png/);
+  assert.match(home, /href="\/star-catcher\/"/);
+  for (const path of ["index.html", "level-1/index.html", "book/index.html", "404.html", "real-code-quest/index.html", "pocket-games/index.html"]) {
+    assert.match(read(path), /href="\/star-catcher\/">Star Catcher</, path);
+  }
+});
+
+test("coming soon books are listed and link the Star Catcher practice file", () => {
   const quest = read("real-code-quest/index.html");
   const pocket = read("pocket-games/index.html");
   const home = read("index.html");
@@ -80,7 +103,7 @@ test("coming soon books are listed and do not link Star Catcher before that page
     assert.match(html, /data-measure-event="level1_pdf_click"/);
     assert.match(html, /hello@levelupmakers\.com/);
     assert.match(html, /href="\/contact\/"/);
-    assert.equal(html.includes("/star-catcher/"), false);
+    assert.match(html, /href="\/star-catcher\/"/);
     assert.equal(html.includes("<form"), false);
     assert.equal(html.includes("<video"), false);
     assert.equal(html.includes("grandmother"), false);
@@ -102,13 +125,15 @@ test("coming soon books are listed and do not link Star Catcher before that page
   assert.match(pocket, /ten levels/i);
   assert.match(home, /href="\/real-code-quest\/"/);
   assert.match(home, /href="\/pocket-games\/"/);
+  assert.match(home, /href="\/star-catcher\/"/);
   assert.match(book, /href="\/real-code-quest\/"/);
   assert.match(book, /href="\/pocket-games\/"/);
   assert.match(sitemap, /https:\/\/levelupmakers\.com\/real-code-quest\//);
   assert.match(sitemap, /https:\/\/levelupmakers\.com\/pocket-games\//);
   assert.match(llms, /https:\/\/levelupmakers\.com\/real-code-quest\//);
   assert.match(llms, /https:\/\/levelupmakers\.com\/pocket-games\//);
-  assert.equal(home.includes('href="/star-catcher/"'), false);
+  assert.match(llms, /https:\/\/levelupmakers\.com\/star-catcher\//);
+  assert.equal(llms.includes("That file is not on this site yet"), false);
   assert.equal(read("terms/index.html").includes("Level Up 2 and Level Up 3 are coming soon, and they do not have prices yet."), false);
   assert.equal(read("refunds/index.html").includes("Level Up 2 and Level Up 3 do not have prices yet."), false);
 });
