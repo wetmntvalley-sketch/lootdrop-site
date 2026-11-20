@@ -1,9 +1,8 @@
 import {
   MAX_BODY_BYTES,
-  PUBLIC_EVENTS,
-  SOURCES,
   empty,
   isJsonRequest,
+  measurePoint,
   readLimitedText,
   recordingHost,
   requestHostname,
@@ -11,7 +10,7 @@ import {
   writeEvent,
 } from "../_shared.js";
 
-// Public write endpoint for two lesson events. It does not return stored totals.
+// Public write endpoint for allowlisted visit and click events. It does not return stored totals.
 export async function onRequest(context) {
   const { request } = context;
   if (request.method !== "POST") {
@@ -33,14 +32,9 @@ export async function onRequest(context) {
   } catch {
     return empty(400);
   }
-  if (!body || typeof body !== "object" || Array.isArray(body)) return empty(400);
+  const point = measurePoint(body);
+  if (!point) return empty(400);
 
-  const keys = Object.keys(body);
-  if (keys.length !== 2 || !Object.hasOwn(body, "event") || !Object.hasOwn(body, "source")) {
-    return empty(400);
-  }
-  if (!PUBLIC_EVENTS.has(body.event) || !SOURCES.has(body.source)) return empty(400);
-
-  writeEvent(context.env, body.event, body.source);
+  writeEvent(context.env, point.event, point.source);
   return empty(204);
 }

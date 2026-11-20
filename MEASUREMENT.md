@@ -1,39 +1,74 @@
-# Level 1 measurement
+# Visit and click counts
 
-This site stays a static Cloudflare Pages project. The count is a Pages Function, not a Worker migration and not Cloudflare Web Analytics. Web Analytics does not support UTM parameters or custom events, so the classified ad uses its own path.
+The website stays on GitHub Pages. Counts are sent to a small Cloudflare Worker, then stored in Workers Analytics Engine. Cloudflare Web Analytics is free, but it cannot count a PDF click or a notify click, and it does not support custom events. This Worker can, and the Workers Free plan includes it.
 
-Nothing here was deployed, and no Cloudflare account setting was changed.
+Nothing here is deployed by the repository. No Cloudflare account setting is changed until you run the deploy command below.
+
+## What you create
+
+Create these exactly. There is no API token, site token, or other secret to paste into the site.
+
+| What | Value the code expects |
+|---|---|
+| Worker name | `levelupmakers-count` |
+| workers.dev subdomain | `levelupmakers` |
+| Public URL | `https://levelupmakers-count.levelupmakers.workers.dev/measure` |
+| Analytics Engine binding | `LEVEL1_EVENTS` |
+| Analytics Engine dataset | `level1_events` |
+| Deploy config | `wrangler.worker.jsonc` |
+
+The dataset is created the first time a count is accepted. There is no separate “create dataset” step. The binding is declared in `wrangler.worker.jsonc`, so the deploy command attaches it.
+
+Workers Free includes 100,000 Worker requests a day and 100,000 Analytics Engine writes a day. Cloudflare’s current pricing page says Analytics Engine is not billed yet. A site of this size stays inside the free allowance. Do not move levelupmakers.com off GitHub Pages, and do not add a Workers route on the main hostname.
+
+### Deploy
+
+1. In the Cloudflare dashboard, open **Workers & Pages**. If **Your subdomain** is not already set, set it to `levelupmakers`. The site calls `levelupmakers-count.levelupmakers.workers.dev`. If you already use a different workers.dev subdomain, do not rename it. Instead, change the one URL in `assets/measure.js` to `https://levelupmakers-count.<that-subdomain>.workers.dev/measure` and deploy the Worker under the name `levelupmakers-count`.
+2. From this repository, after `npx wrangler login`:
+
+```bash
+npx wrangler deploy --config wrangler.worker.jsonc
+```
+
+3. Confirm the command prints `https://levelupmakers-count.levelupmakers.workers.dev`. That is the address `assets/measure.js` already uses. Do not add a Web Analytics beacon token.
+4. Deploy the Worker before this site change is merged. Until the Worker exists, the pages still load, and the browser’s count request fails quietly.
+
+Leave `wrangler.jsonc` as it is. That file is only for a local Pages Functions preview. It is not the production counter.
 
 ## What is counted
 
+The browser sends two fields: `event` and `source`. The Worker stores those two labels, the number `1`, and the time Analytics Engine assigns in UTC. It does not read the Referer header, an IP address, a browser type, or a cookie into the dataset.
+
 | Event (`blob1`) | Source (`blob2`) | When it is written |
 |---|---|---|
-| `level1_visit` | `site` | The browser loads `/level-1/` without the classified-ad marker. |
-| `level1_visit` | `homeschool-classifieds` | The browser loads `/level-1/` in the same page view as the classified-ad link. |
-| `level1_pdf_click` | `site` or `homeschool-classifieds` | A click on **Download the free Level 1 PDF**. |
-| `campaign_visit` | `homeschool-classifieds` | A `GET` request to the classified-ad path. The function writes this. The public endpoint cannot. |
+| `page_visit` | A short label, below | A public page that loads `/assets/measure.js` finishes loading on levelupmakers.com. |
+| `level1_visit` | The same label as that page | The browser loads `/level-1/`. |
+| `level1_pdf_click` | The same label as that page | A click on **Download the free Level 1 PDF**. The file URL is unchanged: `/level-1/level-1-spark.pdf`. |
+| `notify_click` | The same label as that page | A click on a coming-soon **Get notified**, **Email us**, or notify **contact page** link. |
+| `campaign_visit` | `homeschool-classifieds` | Only if the old Pages Function runs. GitHub Pages does not run it. Use `page_visit` with that source instead. |
 
-Each stored point is those two labels, the number `1`, and the time Analytics Engine assigns in UTC. The public endpoint accepts only `level1_visit` and `level1_pdf_click`, and only the sources `site` and `homeschool-classifieds`. Extra fields are rejected. The response is empty. There is no public read API.
+Source labels:
 
-The classified-ad URL to paste later is:
+| Label | Meaning |
+|---|---|
+| `facebook` | The visit came from Facebook or Messenger, or the link used `?from=facebook`. |
+| `instagram` | The visit came from Instagram. |
+| `direct` | The browser sent no referring site. |
+| `site` | The visitor moved from one Level Up Makers page to another, and no earlier label was kept. |
+| `other` | Some other site. The hostname is not stored. |
+| `homeschool-classifieds` | The visit used `/from/homeschool-classifieds`. |
 
-`https://levelupmakers.com/from/homeschool-classifieds`
+The browser classifies the referring site and sends only the label. A referring address such as `https://l.facebook.com/l.php?email=…` becomes `facebook`. The path and query are not sent.
 
-It opens the free Level 1 chapter. It does not open the Payhip manual. The PDF at `/level-1/level-1-spark.pdf` is that same free chapter.
+Facebook’s app often sends no referring site. For a post in a Facebook group, use either of these links so the visit still counts as Facebook:
 
-## What the owner configures once
+- `https://levelupmakers.com/from/facebook`
+- `https://levelupmakers.com/real-code-quest/?from=facebook`
+- `https://levelupmakers.com/pocket-games/?from=facebook`
 
-1. Confirm the Pages project serves this repository. On 5 November 2026, `levelupmakers.com` still answered from GitHub Pages (`server: GitHub.com`, Porkbun DNS, GitHub Pages A records `185.199.108.153`–`185.199.111.153`). The PDF and the static classified-ad redirect work there. The function does not run, and the count is not stored, until Cloudflare Pages is the host. Do not move this project to Workers.
-2. Pages build settings for this repository: no build command, build output directory `/` (the repository root). `package.json` is not part of this site. Do not add a build step.
-3. In the Cloudflare dashboard, open **Workers & Pages**, select this Pages project, then **Settings > Bindings > Add > Analytics engine**. Do this for **Production**.
-   - Variable name: `LEVEL1_EVENTS`
-   - Dataset: `level1_events`
-4. Redeploy the project so the binding is attached. The dataset is created on the first accepted write. There is no separate create step.
-5. Leave `wrangler.jsonc` without `pages_build_output_dir`. That keeps the file local-only. Adding `pages_build_output_dir` makes the file the source of truth and can overwrite dashboard settings on the next deploy. If you later choose that, run `npx wrangler pages download config` first and compare.
+That label is remembered in session storage for the open tab, so a later PDF click in the same tab stays `facebook`. It is not a cookie. Closing the tab clears it.
 
-Counts are written only for `levelupmakers.com`, `www.levelupmakers.com`, and local dev hosts. A `pages.dev` preview redirects to the free chapter and does not write.
-
-`_routes.json` invokes Functions only for `/api/measure` and `/from/homeschool-classifieds`. Other files stay static.
+The Worker accepts a count only from `https://levelupmakers.com`, `https://www.levelupmakers.com`, or local `http://localhost` / `http://127.0.0.1`. The public endpoint accepts only the events in the table above, except `campaign_visit`. Extra fields are rejected.
 
 ## How to view totals
 
@@ -45,7 +80,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/analytics_engine/
   --data "SELECT blob1 AS event, blob2 AS source, SUM(_sample_interval) AS total FROM level1_events WHERE timestamp > NOW() - INTERVAL '30' DAY GROUP BY event, source ORDER BY event, source"
 ```
 
-`SUM(_sample_interval)` is the count Cloudflare documents for sampled data. This site should stay unsampled. A daily breakdown:
+`SUM(_sample_interval)` is the count Cloudflare documents for sampled data. This site should stay unsampled. Facebook traffic is the `page_visit` rows whose source is `facebook`. PDF clicks from those visits are `level1_pdf_click` with the same source.
+
+A daily breakdown:
 
 ```sql
 SELECT formatDateTime(timestamp, '%Y-%m-%d', 'Etc/UTC') AS day,
@@ -58,14 +95,14 @@ GROUP BY day, event, source
 ORDER BY day, event, source
 ```
 
-`SHOW TABLES` lists the dataset after the first write. Retention is about 90 days. `campaign_visit` is the classified-ad total. `level1_visit` with source `homeschool-classifieds` is the lesson view after that redirect, in that same page load.
+Retention is about 90 days.
 
 ## Limits
 
-- A PDF event is a click on the download link, not a completed download. A click still counts if the file fails or the visitor cancels.
-- Lesson views and PDF clicks need JavaScript. The classified-ad path does not. Visitors who block `/api/measure` are missing from the lesson and PDF totals.
-- Reloading Level 1 counts another lesson view. The classified-ad source is remembered only for that page load, in memory. It is not a cookie. A later visit without the ad path counts as `site`.
-- The classified-ad total counts each `GET` to that path, including a refresh or a bot. `HEAD` does not count.
-- A modified browser on this site can send the two public events. It cannot store an arbitrary name, an IP address, a browser type, or a personal identifier. Trust `campaign_visit` for the ad path.
-- Host logs at GitHub Pages today, and at Cloudflare when Pages is the host, can still include IP address and browser type. Those logs are not copied into this dataset.
+- A PDF event is a click on the download link, not a completed download. The PDF file is still the static file on GitHub Pages. It does not pass through the Worker.
+- A notify event is a click, not an email sent. Mailto links open the visitor’s own mail program.
+- Visits and clicks need JavaScript. Visitors who block the Worker are missing from the totals.
+- Reloading a page counts another visit.
+- A modified browser can send the allowlisted events. It cannot store an arbitrary name, a full referring address, an IP address, or a personal identifier.
+- GitHub Pages logs, and Cloudflare’s Worker logs, can still include an IP address and a browser type. Those logs are not copied into this dataset.
 - The count is not tied to a person, so one visit cannot be deleted. Points age out after about 90 days.
