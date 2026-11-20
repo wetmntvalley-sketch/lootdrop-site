@@ -262,7 +262,7 @@ test("referrer becomes a short label and the address is dropped", () => {
 
 test("worker stores a page visit from an allowed origin and ignores identifying headers", async () => {
   const { env, points } = recorder();
-  const request = new Request("https://levelupmakers-count.levelupmakers.workers.dev/measure", {
+  const request = new Request("https://levelupmakers-count.wetmntvalley.workers.dev/measure", {
     method: "POST",
     headers: {
       Origin: "https://levelupmakers.com",
@@ -288,7 +288,7 @@ test("worker stores a page visit from an allowed origin and ignores identifying 
 
 test("worker rejects a notify click from an unknown origin", async () => {
   const { env, points } = recorder();
-  const request = new Request("https://levelupmakers-count.levelupmakers.workers.dev/measure", {
+  const request = new Request("https://levelupmakers-count.wetmntvalley.workers.dev/measure", {
     method: "POST",
     headers: {
       Origin: "https://evil.example",
@@ -303,7 +303,10 @@ test("worker rejects a notify click from an unknown origin", async () => {
 
 test("coming soon notify links and the counter script are on the public pages", () => {
   const measureJs = readFileSync("assets/measure.js", "utf8");
-  assert.match(measureJs, /https:\/\/levelupmakers-count\.levelupmakers\.workers\.dev\/measure/);
+  assert.match(measureJs, /https:\/\/levelupmakers-count\.wetmntvalley\.workers\.dev\/measure/);
+  const workerSource = readFileSync("worker/index.js", "utf8");
+  assert.match(workerSource, /https:\/\/levelupmakers\.com/);
+  assert.match(workerSource, /https:\/\/www\.levelupmakers\.com/);
   assert.match(measureJs, /JSON\.stringify\(\{ event: eventName, source: source \}\)/);
   assert.equal(measureJs.includes("document.referrer"), true);
   assert.equal(measureJs.includes("referrer: source"), false);

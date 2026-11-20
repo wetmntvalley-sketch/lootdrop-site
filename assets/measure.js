@@ -1,8 +1,8 @@
 import { PUBLIC_EVENTS, sourceFromSignals } from "/functions/_shared.js";
 
 // Public address of the counter Worker. Not a secret.
-// The workers.dev subdomain must be exactly "levelupmakers". See MEASUREMENT.md.
-var MEASURE_URL = "https://levelupmakers-count.levelupmakers.workers.dev/measure";
+// The account workers.dev subdomain is wetmntvalley. Do not rename it. See MEASUREMENT.md.
+var MEASURE_URL = "https://levelupmakers-count.wetmntvalley.workers.dev/measure";
 var STICKY_KEY = "lum-source";
 
 function productionHost() {

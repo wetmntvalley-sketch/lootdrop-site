@@ -11,8 +11,8 @@ Create these exactly. There is no API token, site token, or other secret to past
 | What | Value the code expects |
 |---|---|
 | Worker name | `levelupmakers-count` |
-| workers.dev subdomain | `levelupmakers` |
-| Public URL | `https://levelupmakers-count.levelupmakers.workers.dev/measure` |
+| workers.dev subdomain | `wetmntvalley` (already on the account; do not rename it) |
+| Public URL | `https://levelupmakers-count.wetmntvalley.workers.dev/measure` |
 | Analytics Engine binding | `LEVEL1_EVENTS` |
 | Analytics Engine dataset | `level1_events` |
 | Deploy config | `wrangler.worker.jsonc` |
@@ -23,14 +23,14 @@ Workers Free includes 100,000 Worker requests a day and 100,000 Analytics Engine
 
 ### Deploy
 
-1. In the Cloudflare dashboard, open **Workers & Pages**. If **Your subdomain** is not already set, set it to `levelupmakers`. The site calls `levelupmakers-count.levelupmakers.workers.dev`. If you already use a different workers.dev subdomain, do not rename it. Instead, change the one URL in `assets/measure.js` to `https://levelupmakers-count.<that-subdomain>.workers.dev/measure` and deploy the Worker under the name `levelupmakers-count`.
+1. Leave the account workers.dev subdomain as `wetmntvalley`. Do not rename it. The site calls `https://levelupmakers-count.wetmntvalley.workers.dev/measure`. The Worker still accepts counts only from `https://levelupmakers.com` and `https://www.levelupmakers.com`.
 2. From this repository, after `npx wrangler login`:
 
 ```bash
 npx wrangler deploy --config wrangler.worker.jsonc
 ```
 
-3. Confirm the command prints `https://levelupmakers-count.levelupmakers.workers.dev`. That is the address `assets/measure.js` already uses. Do not add a Web Analytics beacon token.
+3. Confirm the command prints `https://levelupmakers-count.wetmntvalley.workers.dev`. That is the address `assets/measure.js` already uses. Do not add a Web Analytics beacon token.
 4. Deploy the Worker before this site change is merged. Until the Worker exists, the pages still load, and the browser’s count request fails quietly.
 
 Leave `wrangler.jsonc` as it is. That file is only for a local Pages Functions preview. It is not the production counter.
