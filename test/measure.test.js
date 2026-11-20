@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { onRequest as measure } from "../functions/api/measure.js";
 import { onRequest as campaign } from "../functions/from/homeschool-classifieds.js";
+import { sourceFromSignals } from "../functions/_shared.js";
+import worker from "../worker/index.js";
 
 function recorder() {
   const points = [];
@@ -58,6 +60,20 @@ test("stores a Level 1 visit as event name and source only", async () => {
   assert.equal(JSON.stringify(points).includes("child@example.com"), false);
 });
 
+test("coming soon level 1 pdf clicks use their own event names", async () => {
+  const { env, points } = recorder();
+  for (const event of ["real_code_quest_level1_pdf_click", "pocket_games_level1_pdf_click"]) {
+    const body = { event, source: "homeschool-classifieds" };
+    assert.ok(JSON.stringify(body).length <= 160, event);
+    const response = await measure(context(post("https://levelupmakers.com/api/measure", body), env));
+    assert.equal(response.status, 204, event);
+  }
+  assert.deepEqual(points.map((point) => point.blobs[0]), [
+    "real_code_quest_level1_pdf_click",
+    "pocket_games_level1_pdf_click",
+  ]);
+});
+
 test("stores a classified-ad PDF click source", async () => {
   const { env, points } = recorder();
   const response = await measure(context(post("http://127.0.0.1:8788/api/measure", {
@@ -72,7 +88,7 @@ test("rejects events outside the allowlist, including campaign writes", async ()
   const { env, points } = recorder();
   const cases = [
     { event: "campaign_visit", source: "homeschool-classifieds" },
-    { event: "level1_visit", source: "facebook" },
+    { event: "level1_visit", source: "https://facebook.com/groups/secret?email=child@example.com" },
     { event: "page_view", source: "site" },
     { event: "level1_visit", source: "site", email: "a@b.c" },
     { event: 1, source: "site" },
@@ -188,8 +204,128 @@ test("function source does not read identifying headers", () => {
     "functions/_shared.js",
     "functions/api/measure.js",
     "functions/from/homeschool-classifieds.js",
+    "worker/index.js",
   ].map((path) => readFileSync(path, "utf8")).join("\n");
   assert.doesNotMatch(source, /headers\.get\(\s*["'](cookie|user-agent|cf-connecting-ip|x-forwarded-for|referer|referrer)/i);
   assert.doesNotMatch(source, /request\.cf/);
-  assert.doesNotMatch(source, /console\./);
+  const functionsOnly = [
+    "functions/_shared.js",
+    "functions/api/measure.js",
+    "functions/from/homeschool-classifieds.js",
+  ].map((path) => readFileSync(path, "utf8")).join("\n");
+  assert.doesNotMatch(functionsOnly, /console\./);
+});
+
+test("referrer becomes a short label and the address is dropped", () => {
+  assert.equal(sourceFromSignals({
+    referrer: "https://l.facebook.com/l.php?u=https%3A%2F%2Flevelupmakers.com&email=child@example.com",
+    pageHref: "https://levelupmakers.com/",
+  }), "facebook");
+  assert.equal(sourceFromSignals({
+    referrer: "https://www.instagram.com/p/abc/",
+    pageHref: "https://levelupmakers.com/pocket-games/",
+  }), "instagram");
+  assert.equal(sourceFromSignals({
+    referrer: "",
+    pageHref: "https://levelupmakers.com/",
+  }), "direct");
+  assert.equal(sourceFromSignals({
+    referrer: "https://levelupmakers.com/real-code-quest/",
+    pageHref: "https://levelupmakers.com/level-1/",
+  }), "site");
+  assert.equal(sourceFromSignals({
+    referrer: "https://example.com/path?email=child@example.com",
+    pageHref: "https://levelupmakers.com/",
+  }), "other");
+  assert.equal(sourceFromSignals({
+    referrer: "https://example.com/",
+    pageHref: "https://levelupmakers.com/",
+    explicit: "facebook",
+  }), "facebook");
+  assert.equal(sourceFromSignals({
+    referrer: "https://levelupmakers.com/",
+    pageHref: "https://levelupmakers.com/level-1/",
+    stored: "facebook",
+  }), "facebook");
+  assert.equal(sourceFromSignals({
+    referrer: "",
+    pageHref: "https://levelupmakers.com/",
+    explicit: "https://facebook.com/groups/1",
+  }), "direct");
+  const labeled = sourceFromSignals({
+    referrer: "https://lm.facebook.com/l.php?email=child@example.com",
+    pageHref: "https://levelupmakers.com/real-code-quest/",
+  });
+  assert.equal(labeled, "facebook");
+  assert.equal(labeled.includes("child@example.com"), false);
+});
+
+test("worker stores a page visit from an allowed origin and ignores identifying headers", async () => {
+  const { env, points } = recorder();
+  const request = new Request("https://levelupmakers-count.levelupmakers.workers.dev/measure", {
+    method: "POST",
+    headers: {
+      Origin: "https://levelupmakers.com",
+      "Content-Type": "text/plain",
+      "User-Agent": "Mozilla/5.0",
+      "CF-Connecting-IP": "203.0.113.8",
+      Cookie: "session=secret",
+      Referer: "https://l.facebook.com/l.php?email=child@example.com",
+    },
+    body: JSON.stringify({ event: "page_visit", source: "facebook" }),
+  });
+  const response = await worker.fetch(request, env);
+  assert.equal(response.status, 204);
+  assert.equal(response.headers.get("Access-Control-Allow-Origin"), "https://levelupmakers.com");
+  assert.deepEqual(points, [{
+    blobs: ["page_visit", "facebook"],
+    doubles: [1],
+    indexes: ["page_visit"],
+  }]);
+  assert.equal(JSON.stringify(points).includes("child@example.com"), false);
+  assert.equal(JSON.stringify(points).includes("203.0.113.8"), false);
+});
+
+test("worker rejects a notify click from an unknown origin", async () => {
+  const { env, points } = recorder();
+  const request = new Request("https://levelupmakers-count.levelupmakers.workers.dev/measure", {
+    method: "POST",
+    headers: {
+      Origin: "https://evil.example",
+      "Content-Type": "text/plain",
+    },
+    body: JSON.stringify({ event: "notify_click", source: "facebook" }),
+  });
+  const response = await worker.fetch(request, env);
+  assert.equal(response.status, 403);
+  assert.equal(points.length, 0);
+});
+
+test("coming soon notify links and the counter script are on the public pages", () => {
+  const measureJs = readFileSync("assets/measure.js", "utf8");
+  assert.match(measureJs, /https:\/\/levelupmakers-count\.levelupmakers\.workers\.dev\/measure/);
+  assert.match(measureJs, /JSON\.stringify\(\{ event: eventName, source: source \}\)/);
+  assert.equal(measureJs.includes("document.referrer"), true);
+  assert.equal(measureJs.includes("referrer: source"), false);
+  for (const path of ["real-code-quest/index.html", "pocket-games/index.html", "index.html", "level-1/index.html"]) {
+    const html = readFileSync(path, "utf8");
+    assert.match(html, /src="\/assets\/measure\.js"/, path);
+  }
+  for (const path of ["real-code-quest/index.html", "pocket-games/index.html"]) {
+    const html = readFileSync(path, "utf8");
+    assert.match(html, /data-measure-event="notify_click"/, path);
+    assert.match(html, /data-measure-event="level1_pdf_click"/, path);
+  }
+  const quest = readFileSync("real-code-quest/index.html", "utf8");
+  const pocket = readFileSync("pocket-games/index.html", "utf8");
+  assert.match(quest, /href="\/real-code-quest\/real-code-quest-level-1\.pdf"/);
+  assert.match(quest, /data-measure-event="real_code_quest_level1_pdf_click"/);
+  assert.match(pocket, /href="\/pocket-games\/pocket-games-level-1\.pdf"/);
+  assert.match(pocket, /data-measure-event="pocket_games_level1_pdf_click"/);
+  assert.match(readFileSync("sitemap.xml", "utf8"), /real-code-quest-level-1\.pdf/);
+  assert.match(readFileSync("sitemap.xml", "utf8"), /pocket-games-level-1\.pdf/);
+  const facebook = readFileSync("from/facebook/index.html", "utf8");
+  assert.match(facebook, /\/\?from=facebook/);
+  assert.match(facebook, /noindex/);
+  assert.equal(readFileSync("sitemap.xml", "utf8").includes("/from/facebook"), false);
 });
