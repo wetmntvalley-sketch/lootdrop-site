@@ -26,7 +26,18 @@ test("free Level 1 PDF is the chapter file, not the Payhip manual", () => {
   const lesson = read("level-1/index.html");
   assert.match(lesson, /data-measure-visit="level1_visit"/);
   assert.match(lesson, /not the 178-page manual/);
+  assert.match(lesson, /href="https:\/\/payhip\.com\/b\/tlxyB"/);
+  assert.match(lesson, /get it by email from our shop/);
   assert.equal(lesson.includes('href="https://payhip.com/b/6KDfn" download'), false);
+  for (const path of [
+    "real-code-quest/real-code-quest-level-1.pdf",
+    "pocket-games/pocket-games-level-1.pdf",
+    "level-1/level-1-spark.pdf",
+  ]) {
+    const bytes = readFileSync(path);
+    assert.equal(bytes.subarray(0, 5).toString(), "%PDF-", path);
+    assert.ok(bytes.length > 1000, path);
+  }
 });
 
 test("funding page is cautious and listed for parents", () => {
