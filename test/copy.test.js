@@ -149,3 +149,44 @@ test("classified link is a path to the free chapter and is not in the sitemap", 
   assert.match(robots, /Disallow: \/from\//);
   assert.match(robots, /Disallow: \/api\//);
 });
+
+test("real code quest practice files are free downloads", () => {
+  const page = read("real-code-quest/index.html");
+  const body = page.split("<footer>")[0];
+  const sitemap = read("sitemap.xml");
+  const llms = read("llms.txt");
+  const names = [
+    "hero.png",
+    "level-05-starter.zip",
+    "level-05-finished.zip",
+    "level-06-starter.zip",
+    "level-06-finished.zip",
+    "level-07-starter.zip",
+    "level-07-finished.zip",
+    "level-08-starter.zip",
+    "level-08-finished.zip",
+    "level-09-starter.zip",
+    "level-09-finished.zip",
+    "level-10-starter.zip",
+    "level-10-finished.zip",
+  ];
+  for (const name of names) {
+    const href = `/downloads/real-code-quest/${name}`;
+    const escapedHref = href.replaceAll(".", "\\.");
+    const escapedName = name.replaceAll(".", "\\.");
+    assert.match(page, new RegExp(`href="${escapedHref}" download="${escapedName}"`), name);
+    assert.match(sitemap, new RegExp(`https://levelupmakers\\.com${escapedHref}`), name);
+    const bytes = readFileSync(`downloads/real-code-quest/${name}`);
+    if (name.endsWith(".png")) {
+      assert.equal(bytes.subarray(0, 8).toString("hex"), "89504e470d0a1a0a", name);
+    } else {
+      assert.equal(bytes.subarray(0, 2).toString(), "PK", name);
+    }
+    assert.ok(bytes.length > 100, name);
+  }
+  assert.match(page, /Practice files/);
+  assert.match(page, /href="\/star-catcher\/"/);
+  assert.match(llms, /downloads\/real-code-quest/);
+  assert.equal(body.includes("grandmother"), false);
+  assert.equal(body.includes("grandson"), false);
+});
