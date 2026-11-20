@@ -16,6 +16,8 @@ A coarse Level 1 count is described in `MEASUREMENT.md`. It runs as a Cloudflare
 |---|---|
 | `index.html` | Homepage for parents: learning path, safety, and prices. |
 | `book/index.html` | Book page: Amazon paperback and Payhip PDF. |
+| `real-code-quest/index.html` | Coming soon page for Level Up 2: Real Code Quest. Planned PDF $19, planned paperback $34.99. Not for sale yet. |
+| `pocket-games/index.html` | Coming soon page for Level Up Makers: Pocket Games. Price coming soon. |
 | `review/index.html` | Email gate for adult reviewers. The PDF delivery hook is not connected yet. |
 | `printables/index.html` | Live page listing the printables in the $29 Parent + Student bundle. The worksheet files are in the bundle download, not on this page. |
 | `level-1/index.html` | Free Level 1 chapter, ready to print. |
