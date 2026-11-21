@@ -412,6 +412,9 @@ test("youtube channel link stays inside an html comment", () => {
     const footer = visible.split("<footer>")[1] || "";
     assert.equal(footer.includes("youtube.com"), false, path);
     assert.match(footer, /https:\/\/x\.com\/levelupmakers/, path);
+    assert.match(footer, /<a href="https:\/\/www\.facebook\.com\/levelupmakers\/" rel="noopener">Facebook<\/a>/, path);
   }
   assert.ok(footers >= 20);
+  const home = readFileSync("index.html", "utf8");
+  assert.match(home, /"https:\/\/x\.com\/levelupmakers",\s*"https:\/\/www\.facebook\.com\/levelupmakers\/"/);
 });
