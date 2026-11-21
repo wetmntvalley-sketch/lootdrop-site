@@ -1,5 +1,5 @@
 # Level Up Makers welcomes search engines and AI crawlers.
-# Archived Loot Drop pages stay on the site but should not be indexed.
+# Old addresses redirect to the home page and should not be indexed.
 User-agent: *
 Allow: /
 Disallow: /archive/
