@@ -14,8 +14,8 @@ A coarse visit and click count is described in `MEASUREMENT.md`. The website sta
 
 | Path | Purpose |
 |---|---|
-| `index.html` | Homepage for parents: learning path, safety, and prices. |
-| `book/index.html` | Book page: Amazon paperback and Payhip PDF. |
+| `index.html` | Homepage for parents: learning path, free downloads, safety, and prices. |
+| `book/index.html` | Books page: the current manual (Amazon paperback and Payhip PDF), plus Real Code Quest and Pocket Games marked coming soon. |
 | `real-code-quest/index.html` | Coming soon page for Level Up 2: Real Code Quest. Planned PDF $19, planned paperback $34.99. Not for sale yet. |
 | `pocket-games/index.html` | Coming soon page for Level Up Makers: Pocket Games. Price coming soon. |
 | `review/index.html` | Email gate for adult reviewers. The PDF delivery hook is not connected yet. |
