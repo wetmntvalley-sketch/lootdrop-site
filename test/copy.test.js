@@ -279,3 +279,55 @@ test("real code quest practice files are free downloads", () => {
   assert.equal(body.includes("grandmother"), false);
   assert.equal(body.includes("grandson"), false);
 });
+
+test("facebook and level 1 share cards are set, and public text does not name Loot Drop", () => {
+  const share = "https://levelupmakers.com/assets/share.png";
+  const facebook = read("from/facebook/index.html");
+  const level1 = read("level-1/index.html");
+  for (const [path, html] of [["from/facebook/index.html", facebook], ["level-1/index.html", level1]]) {
+    assert.match(html, /property="og:title"/, path);
+    assert.match(html, /property="og:description"/, path);
+    assert.match(html, /property="og:image" content="https:\/\/levelupmakers\.com\/assets\/share\.png"/, path);
+    assert.match(html, /property="og:url"/, path);
+    assert.match(html, /property="og:type" content="website"/, path);
+    assert.match(html, /name="twitter:card" content="summary_large_image"/, path);
+  }
+  assert.match(facebook, /rel="canonical" href="https:\/\/levelupmakers\.com\/"/);
+  assert.match(facebook, /property="og:url" content="https:\/\/levelupmakers\.com\/"/);
+  assert.match(facebook, /http-equiv="refresh" content="0; url=\/\?from=facebook"/);
+  assert.match(facebook, /location\.replace\("\/\?from=facebook"\)/);
+  assert.match(level1, /property="og:url" content="https:\/\/levelupmakers\.com\/level-1\/"/);
+  const png = readFileSync("assets/share.png");
+  assert.equal(png.subarray(1, 4).toString(), "PNG");
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+
+  const skipDir = new Set([".git", "node_modules", "test", "worker", "functions", "scripts"]);
+  const skipFile = new Set(["README.md", "MEASUREMENT.md"]);
+  const textExt = new Set([".html", ".txt", ".xml", ".css", ".js", ".svg", ".md", ".json"]);
+  const brand = /loot[\s-]?drop/i;
+  const htmlPages = [];
+  const walk = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (skipDir.has(entry.name)) continue;
+      const path = dir === "." ? entry.name : `${dir}/${entry.name}`;
+      if (entry.isDirectory()) {
+        walk(path);
+        continue;
+      }
+      if (skipFile.has(entry.name)) continue;
+      const ext = entry.name.slice(entry.name.lastIndexOf("."));
+      if (!textExt.has(ext)) continue;
+      const text = read(path);
+      assert.equal(brand.test(text), false, path);
+      if (ext === ".html") htmlPages.push(path);
+    }
+  };
+  walk(".");
+  assert.ok(htmlPages.includes("from/facebook/index.html"));
+  assert.ok(htmlPages.includes("level-1/index.html"));
+  for (const path of htmlPages) {
+    assert.match(read(path), /property="og:image" content="https:\/\/levelupmakers\.com\//, path);
+  }
+  assert.equal(share.startsWith("https://levelupmakers.com/"), true);
+});

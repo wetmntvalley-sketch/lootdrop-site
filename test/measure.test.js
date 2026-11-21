@@ -303,7 +303,10 @@ test("worker rejects a notify click from an unknown origin", async () => {
 
 test("coming soon notify links and the counter script are on the public pages", () => {
   const measureJs = readFileSync("assets/measure.js", "utf8");
-  assert.match(measureJs, /https:\/\/levelupmakers-count\.wetmntvalley\.workers\.dev\/measure/);
+  const measureUrl = "https://levelupmakers-count.wetmntvalley.workers.dev/measure";
+  assert.equal(measureJs.split(measureUrl).length - 1, 1);
+  assert.match(measureJs, /var MEASURE_URL = "https:\/\/levelupmakers-count\.wetmntvalley\.workers\.dev\/measure"/);
+  assert.equal(readFileSync("llms.txt", "utf8").includes(measureUrl), false);
   const workerSource = readFileSync("worker/index.js", "utf8");
   assert.match(workerSource, /https:\/\/levelupmakers\.com/);
   assert.match(workerSource, /https:\/\/www\.levelupmakers\.com/);
