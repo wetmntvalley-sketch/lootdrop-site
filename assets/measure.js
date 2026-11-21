@@ -32,7 +32,7 @@ function readStored() {
 }
 
 function writeStored(source) {
-  if (source !== "facebook" && source !== "instagram" && source !== "homeschool-classifieds") return;
+  if (source !== "facebook" && source !== "instagram" && source !== "youtube" && source !== "homeschool-classifieds") return;
   try {
     sessionStorage.setItem(STICKY_KEY, source);
   } catch (err) {}

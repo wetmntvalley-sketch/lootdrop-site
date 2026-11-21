@@ -54,13 +54,14 @@ Source labels:
 | Label | Meaning |
 |---|---|
 | `facebook` | The visit came from Facebook or Messenger, or the link used `?from=facebook`. |
+| `youtube` | The visit came from YouTube (`youtube.com` or `youtu.be`), or the link used `?from=youtube`. |
 | `instagram` | The visit came from Instagram. |
 | `direct` | The browser sent no referring site. |
 | `site` | The visitor moved from one Level Up Makers page to another, and no earlier label was kept. |
 | `other` | Some other site. The hostname is not stored. |
 | `homeschool-classifieds` | The visit used `/from/homeschool-classifieds`. |
 
-The browser classifies the referring site and sends only the label. A referring address such as `https://l.facebook.com/l.php?email=…` becomes `facebook`. The path and query are not sent.
+The browser classifies the referring site and sends only the label. A referring address such as `https://l.facebook.com/l.php?email=…` becomes `facebook`. A referring address on `youtube.com` or `youtu.be`, such as `https://www.youtube.com/watch?v=…` or `https://youtu.be/…`, becomes `youtube`. The path and query are not sent.
 
 Facebook’s app often sends no referring site. For a post in a Facebook group, use either of these links so the visit still counts as Facebook:
 
@@ -68,7 +69,12 @@ Facebook’s app often sends no referring site. For a post in a Facebook group, 
 - `https://levelupmakers.com/real-code-quest/?from=facebook`
 - `https://levelupmakers.com/pocket-games/?from=facebook`
 
-That label is remembered in session storage for the open tab, so a later PDF click in the same tab stays `facebook`. It is not a cookie. Closing the tab clears it.
+YouTube’s app often sends no referring site. For a video description or community post, use either of these links so the visit still counts as YouTube:
+
+- `https://levelupmakers.com/from/youtube`
+- `https://levelupmakers.com/level-1/?from=youtube`
+
+That label is remembered in session storage for the open tab, so a later PDF click in the same tab stays `facebook`. A `youtube` label is remembered the same way. It is not a cookie. Closing the tab clears it.
 
 The Worker accepts a count only from `https://levelupmakers.com`, `https://www.levelupmakers.com`, or local `http://localhost` / `http://127.0.0.1`. The public endpoint accepts only the events in the table above, except `campaign_visit`. Extra fields are rejected.
 
@@ -82,7 +88,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/ACCOUNT_ID/analytics_engine/
   --data "SELECT blob1 AS event, blob2 AS source, SUM(_sample_interval) AS total FROM level1_events WHERE timestamp > NOW() - INTERVAL '30' DAY GROUP BY event, source ORDER BY event, source"
 ```
 
-`SUM(_sample_interval)` is the count Cloudflare documents for sampled data. This site should stay unsampled. Facebook traffic is the `page_visit` rows whose source is `facebook`. PDF clicks from those visits are `level1_pdf_click` with the same source.
+`SUM(_sample_interval)` is the count Cloudflare documents for sampled data. This site should stay unsampled. Facebook traffic is the `page_visit` rows whose source is `facebook`. YouTube traffic is the `page_visit` rows whose source is `youtube`. PDF clicks from those visits are `level1_pdf_click` with the same source.
 
 A daily breakdown:
 

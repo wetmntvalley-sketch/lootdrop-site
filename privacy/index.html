@@ -63,7 +63,7 @@
       <h2 id="collect">1. What we collect and why</h2>
       <ul>
         <li><strong>The public pages.</strong> The homepage, the free Level 1 chapter, and the <a href="/contact/">contact page</a> have no forms. They do not ask for a name, an email, or an account.</li>
-        <li><strong>A coarse count of visits and a few clicks.</strong> Public pages can record a page visit. The free Level 1 PDF buttons can record a click, including the first lesson of each coming-soon book. The coming-soon pages can record a click on a notify link. The Homeschool Classifieds path and a Facebook path can mark that visit. Each record is an event name, a short source label, and the time Cloudflare receives it. The label is one of <code>site</code>, <code>direct</code>, <code>facebook</code>, <code>instagram</code>, <code>other</code>, or <code>homeschool-classifieds</code>. The browser turns the referring site into that label. It does not send the full address, the path, or the query string. We do not add an IP address, browser type, name, email, or anything about a child. The public site does not show the totals.</li>
+        <li><strong>A coarse count of visits and a few clicks.</strong> Public pages can record a page visit. The free Level 1 PDF buttons can record a click, including the first lesson of each coming-soon book. The coming-soon pages can record a click on a notify link. The Homeschool Classifieds path, a Facebook path, and a YouTube path can mark that visit. Each record is an event name, a short source label, and the time Cloudflare receives it. The label is one of <code>site</code>, <code>direct</code>, <code>facebook</code>, <code>instagram</code>, <code>youtube</code>, <code>other</code>, or <code>homeschool-classifieds</code>. The browser turns the referring site into that label. It does not send the full address, the path, or the query string. We do not add an IP address, browser type, name, email, or anything about a child. The public site does not show the totals.</li>
         <li><strong>The reviewer page.</strong> Adult reviewers and influencers can enter a name and email at <a href="/review/">/review/</a>. On this pass the form does not send that address to a server. It stays in the browser until you email us. We do not ask a student to use this page.</li>
         <li><strong>Email you send us.</strong> If you write to us, we keep that message so we can reply, including a request for the reviewer copy of the full digital book.</li>
         <li><strong>Server logs.</strong> The host of this site may keep basic technical logs, such as IP address, browser type, and pages requested, to run and protect the site. Section 2 names the hosts. Those logs are separate from the coarse visit count, and we do not copy them into that count.</li>
@@ -75,7 +75,7 @@
       </ul>
       <p>The paperback is sold on Amazon. Amazon runs that checkout. The complete PDF is $15 and available now for immediate download. The Parent + Student bundle is $29 and available now for immediate download at <a href="https://payhip.com/b/NsL1H" rel="noopener">Payhip</a>. The same free Level 1 chapter can also be sent by email from <a href="https://payhip.com/b/tlxyB" rel="noopener">Payhip</a> at no charge. Payhip asks for an email for that copy. <a href="https://payhip.com/privacy-policy" rel="noopener">Payhip</a> runs those checkouts. We do not see or store a full card number from either store.</p>
       <h2 id="cookies">3. Cookies and tracking</h2>
-      <p>These pages do not use advertising cookies or third-party trackers. They do not set a cookie for the visit count. For one tab only, the browser can remember a short source label, such as <code>facebook</code>, in session storage so a later click in that tab keeps the same label. Closing the tab clears it. The count is described in section 1. It is stored only when the counter Worker is deployed and the Analytics Engine binding is connected. Until then, that count is not stored by us.</p>
+      <p>These pages do not use advertising cookies or third-party trackers. They do not set a cookie for the visit count. For one tab only, the browser can remember a short source label, such as <code>facebook</code> or <code>youtube</code>, in session storage so a later click in that tab keeps the same label. Closing the tab clears it. The count is described in section 1. It is stored only when the counter Worker is deployed and the Analytics Engine binding is connected. Until then, that count is not stored by us.</p>
       <h2 id="never">4. What we never do</h2>
       <ul>
         <li>Sell or rent personal data.</li>
@@ -125,6 +125,7 @@
     <nav aria-label="Social">
       <ul>
         <li><a href="https://x.com/levelupmakers" rel="noopener">X @levelupmakers</a></li>
+        <!-- Hidden until the YouTube channel is live. The handle is not final. To show this link, set the real channel URL, then remove this comment. <li><a href="https://www.youtube.com/@levelupmakers" rel="noopener">YouTube</a></li> -->
       </ul>
     </nav>
   </div>

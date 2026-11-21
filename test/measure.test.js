@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
 import { onRequest as measure } from "../functions/api/measure.js";
 import { onRequest as campaign } from "../functions/from/homeschool-classifieds.js";
@@ -258,6 +258,33 @@ test("referrer becomes a short label and the address is dropped", () => {
   });
   assert.equal(labeled, "facebook");
   assert.equal(labeled.includes("child@example.com"), false);
+  assert.equal(sourceFromSignals({
+    referrer: "https://www.youtube.com/watch?v=abc&email=child@example.com",
+    pageHref: "https://levelupmakers.com/level-1/",
+  }), "youtube");
+  assert.equal(sourceFromSignals({
+    referrer: "https://youtu.be/abc",
+    pageHref: "https://levelupmakers.com/",
+  }), "youtube");
+  assert.equal(sourceFromSignals({
+    referrer: "https://m.youtube.com/watch?v=abc",
+    pageHref: "https://levelupmakers.com/level-1/",
+  }), "youtube");
+  assert.equal(sourceFromSignals({
+    referrer: "https://example.com/",
+    pageHref: "https://levelupmakers.com/",
+    explicit: "youtube",
+  }), "youtube");
+  assert.equal(sourceFromSignals({
+    referrer: "https://levelupmakers.com/",
+    pageHref: "https://levelupmakers.com/level-1/",
+    stored: "youtube",
+  }), "youtube");
+  const youtubeLabeled = sourceFromSignals({
+    referrer: "https://www.youtube.com/watch?v=abc&email=child@example.com",
+    pageHref: "https://levelupmakers.com/level-1/",
+  });
+  assert.equal(youtubeLabeled.includes("child@example.com"), false);
 });
 
 test("worker stores a page visit from an allowed origin and ignores identifying headers", async () => {
@@ -284,6 +311,16 @@ test("worker stores a page visit from an allowed origin and ignores identifying 
   }]);
   assert.equal(JSON.stringify(points).includes("child@example.com"), false);
   assert.equal(JSON.stringify(points).includes("203.0.113.8"), false);
+});
+
+test("stores a youtube visit label", async () => {
+  const { env, points } = recorder();
+  const response = await measure(context(post("https://levelupmakers.com/api/measure", {
+    event: "page_visit",
+    source: "youtube",
+  }), env));
+  assert.equal(response.status, 204);
+  assert.deepEqual(points[0].blobs, ["page_visit", "youtube"]);
 });
 
 test("worker rejects a notify click from an unknown origin", async () => {
@@ -334,4 +371,47 @@ test("coming soon notify links and the counter script are on the public pages", 
   assert.match(facebook, /\/\?from=facebook/);
   assert.match(facebook, /noindex/);
   assert.equal(readFileSync("sitemap.xml", "utf8").includes("/from/facebook"), false);
+  assert.match(measureJs, /source !== "facebook" && source !== "instagram" && source !== "youtube" && source !== "homeschool-classifieds"/);
+  const youtube = readFileSync("from/youtube/index.html", "utf8");
+  assert.match(youtube, /noindex, nofollow/);
+  assert.match(youtube, /http-equiv="refresh" content="0; url=\/level-1\/\?from=youtube"/);
+  assert.match(youtube, /location\.replace\("\/level-1\/\?from=youtube"\)/);
+  assert.match(youtube, /<a href="\/level-1\/\?from=youtube">Continue<\/a>/);
+  assert.equal(readFileSync("sitemap.xml", "utf8").includes("/from/youtube"), false);
+  const level1 = readFileSync("level-1/index.html", "utf8");
+  const visibleLevel1 = level1.replace(/<!--[\s\S]*?-->/g, "");
+  assert.equal(visibleLevel1.includes("Watch Episode 1"), false);
+  assert.equal(visibleLevel1.includes("VIDEO_ID"), false);
+  assert.equal(visibleLevel1.includes("youtube.com"), false);
+  assert.match(level1, /https:\/\/www\.youtube-nocookie\.com\/embed\/VIDEO_ID/);
+  assert.equal(level1.includes("autoplay"), false);
+  assert.match(level1, /Watch Episode 1/);
+  assert.match(level1, /A free 2-minute walkthrough of opening MakeCode Arcade and starting a new project\./);
+  assert.match(level1, /A grown-up should stay nearby\./);
+  assert.match(level1, /https:\/\/www\.youtube\.com\/watch\?v=VIDEO_ID/);
+});
+
+test("youtube channel link stays inside an html comment", () => {
+  const pages = [];
+  const walk = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name === "archive" || entry.name === "node_modules" || entry.name.startsWith(".")) continue;
+      const path = dir === "." ? entry.name : `${dir}/${entry.name}`;
+      if (entry.isDirectory()) walk(path);
+      else if (entry.name.endsWith(".html")) pages.push(path);
+    }
+  };
+  walk(".");
+  let footers = 0;
+  for (const path of pages) {
+    const html = readFileSync(path, "utf8");
+    if (!html.includes('aria-label="Social"')) continue;
+    footers += 1;
+    assert.match(html, /<!--[^]*https:\/\/www\.youtube\.com\/@levelupmakers[^]*-->/, path);
+    const visible = html.replace(/<!--[^]*?-->/g, "");
+    const footer = visible.split("<footer>")[1] || "";
+    assert.equal(footer.includes("youtube.com"), false, path);
+    assert.match(footer, /https:\/\/x\.com\/levelupmakers/, path);
+  }
+  assert.ok(footers >= 20);
 });

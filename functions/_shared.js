@@ -16,10 +16,11 @@ export const SOURCES = new Set([
   "direct",
   "facebook",
   "instagram",
+  "youtube",
   "other",
   "homeschool-classifieds",
 ]);
-const STICKY_SOURCES = new Set(["facebook", "instagram", "homeschool-classifieds"]);
+const STICKY_SOURCES = new Set(["facebook", "instagram", "youtube", "homeschool-classifieds"]);
 
 export const CAMPAIGN_EVENT = "campaign_visit";
 export const CAMPAIGN_SOURCE = "homeschool-classifieds";
@@ -127,6 +128,11 @@ function isInstagramHost(host) {
   return host === "instagram.com" || host.endsWith(".instagram.com");
 }
 
+function isYouTubeHost(host) {
+  return host === "youtube.com" || host.endsWith(".youtube.com")
+    || host === "youtu.be" || host.endsWith(".youtu.be");
+}
+
 // Turns a referring address into one allowlisted label. The full address is not returned.
 export function sourceFromSignals({ referrer, pageHref, explicit, stored } = {}) {
   if (typeof explicit === "string" && SOURCES.has(explicit)) return explicit;
@@ -137,6 +143,7 @@ export function sourceFromSignals({ referrer, pageHref, explicit, stored } = {})
   if (refHost === pageHost || isOwnHost(refHost)) return "site";
   if (isFacebookHost(refHost)) return "facebook";
   if (isInstagramHost(refHost)) return "instagram";
+  if (isYouTubeHost(refHost)) return "youtube";
   return "other";
 }
 
