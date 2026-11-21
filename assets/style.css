@@ -211,7 +211,9 @@
   .level-list h3{margin:0 0 6px;font-size:1.12rem}
   .level-list .num{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--jr);margin-right:8px}
   .level-list p{margin:4px 0;color:#d4d4e0}
-  body.jr section[id]{scroll-margin-top:84px}
+  .level-list ul{margin:8px 0 4px;padding-left:1.2rem;color:#d4d4e0}
+  .level-list li li{margin:4px 0}
+  body.jr section[id],body.jr h2[id]{scroll-margin-top:84px}
   body.jr .page-hero .fine{max-width:36rem;margin-left:auto;margin-right:auto}
   .path-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}
   .path-step{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--jr);border-radius:var(--radius);padding:18px 20px 14px;margin:0}

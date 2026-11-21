@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { test } from "node:test";
 
 const read = (path) => readFileSync(path, "utf8");
@@ -136,6 +136,95 @@ test("coming soon books are listed and link the Star Catcher practice file", () 
   assert.equal(llms.includes("That file is not on this site yet"), false);
   assert.equal(read("terms/index.html").includes("Level Up 2 and Level Up 3 are coming soon, and they do not have prices yet."), false);
   assert.equal(read("refunds/index.html").includes("Level Up 2 and Level Up 3 do not have prices yet."), false);
+});
+
+test("Books is the nav label and the book page lists all three manuals", () => {
+  const pages = [];
+  const walk = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const path = `${dir}/${entry.name}`;
+      if (entry.isDirectory()) {
+        if (entry.name === "archive" || entry.name.startsWith(".")) continue;
+        walk(path);
+      } else if (entry.name.endsWith(".html")) {
+        pages.push(path);
+      }
+    }
+  };
+  walk(".");
+  let checked = 0;
+  for (const path of pages) {
+    const html = read(path);
+    if (!html.includes('<nav aria-label="Primary">')) continue;
+    const header = html.split("<main")[0];
+    const footer = html.split("<footer>")[1] || "";
+    assert.match(header, /<nav aria-label="Primary">[\s\S]*href="\/book\/"(?: aria-current="page")?>Books<\/a>/, path);
+    assert.equal(header.includes(">The book<"), false, path);
+    assert.match(footer, /href="\/book\/"(?: aria-current="page")?>Books<\/a>/, path);
+    checked += 1;
+  }
+  assert.ok(checked >= 15);
+  const book = read("book/index.html");
+  const listing = book.split('id="books"')[1].split('id="buy"')[0];
+  assert.match(listing, /Available now/);
+  assert.match(listing, /Level Up: Make Your First Game with AI/);
+  assert.match(listing, /\$34\.99/);
+  assert.match(listing, /\$15/);
+  assert.match(listing, /\$29/);
+  assert.match(listing, /Coming soon/);
+  assert.match(listing, /href="\/real-code-quest\/"/);
+  assert.match(listing, /Level Up 2: Real Code Quest/);
+  assert.match(listing, /\$19/);
+  assert.match(listing, /not for sale yet/i);
+  assert.match(listing, /href="\/pocket-games\/"/);
+  assert.match(listing, /Level Up Makers: Pocket Games/);
+  assert.match(listing, /Price coming soon/);
+  assert.equal(listing.includes("Loot Drop"), false);
+  assert.equal(listing.includes("grandmother"), false);
+});
+
+test("home page lists every free download and keeps the click counters", () => {
+  const home = read("index.html");
+  const section = home.split('id="downloads"')[1].split('id="about"')[0];
+  assert.match(section, /Free downloads/);
+  assert.match(section, /href="\/level-1\/"/);
+  assert.match(section, /href="\/level-1\/level-1-spark\.pdf" download="Level-Up-Level-1-Spark\.pdf" data-measure-event="level1_pdf_click"/);
+  assert.match(section, /Coming soon/);
+  assert.match(section, /href="\/real-code-quest\/"/);
+  assert.match(section, /href="\/real-code-quest\/real-code-quest-level-1\.pdf" download="Real-Code-Quest-Level-1\.pdf" data-measure-event="real_code_quest_level1_pdf_click"/);
+  assert.match(section, /href="\/pocket-games\/"/);
+  assert.match(section, /Price coming soon/);
+  assert.match(section, /href="\/pocket-games\/pocket-games-level-1\.pdf" download="Pocket-Games-Level-1\.pdf" data-measure-event="pocket_games_level1_pdf_click"/);
+  assert.match(section, /href="\/star-catcher\/"/);
+  assert.match(section, /href="\/downloads\/star-catcher-practice\.png" download="star-catcher-practice\.png"/);
+  assert.match(section, /href="\/real-code-quest\/#practice"/);
+  assert.match(read("real-code-quest/index.html"), /<h2 id="practice">Practice files<\/h2>/);
+  const names = [
+    "hero.png",
+    "level-05-starter.zip",
+    "level-05-finished.zip",
+    "level-06-starter.zip",
+    "level-06-finished.zip",
+    "level-07-starter.zip",
+    "level-07-finished.zip",
+    "level-08-starter.zip",
+    "level-08-finished.zip",
+    "level-09-starter.zip",
+    "level-09-finished.zip",
+    "level-10-starter.zip",
+    "level-10-finished.zip",
+  ];
+  for (const name of names) {
+    const href = `/downloads/real-code-quest/${name}`.replaceAll(".", "\\.");
+    const file = name.replaceAll(".", "\\.");
+    assert.match(section, new RegExp(`href="${href}" download="${file}"`), name);
+  }
+  assert.equal(section.includes("Loot Drop"), false);
+  assert.equal(section.includes("grandmother"), false);
+  const measure = read("assets/measure.js");
+  assert.match(measure, /new URLSearchParams\(location\.search\)\.get\("from"\)/);
+  assert.match(measure, /url\.searchParams\.delete\("from"\)/);
+  assert.match(home, /src="\/assets\/measure\.js"/);
 });
 
 test("classified link is a path to the free chapter and is not in the sitemap", () => {
