@@ -384,7 +384,7 @@ body.jr.blog .nav ul a[href="/blog/"]{color:var(--jr)}
   body.jr .promo-video,body.jr .promo-sound{display:none!important}
 }
 
-/* Level 1 Episode 1 embed. The section stays in an HTML comment until VIDEO_ID is real. */
+/* Level 1 Episode 1 embed. Responsive 16:9 frame, no autoplay. */
 .episode{padding:8px 0 0}
 .episode .prose h2{margin-top:0}
 .episode-frame{position:relative;width:100%;max-width:40rem;aspect-ratio:16/9;margin:16px 0;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#12121c}
