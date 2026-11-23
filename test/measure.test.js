@@ -380,18 +380,18 @@ test("coming soon notify links and the counter script are on the public pages", 
   assert.equal(readFileSync("sitemap.xml", "utf8").includes("/from/youtube"), false);
   const level1 = readFileSync("level-1/index.html", "utf8");
   const visibleLevel1 = level1.replace(/<!--[\s\S]*?-->/g, "");
-  assert.equal(visibleLevel1.includes("Watch Episode 1"), false);
-  assert.equal(visibleLevel1.includes("VIDEO_ID"), false);
-  assert.equal(visibleLevel1.includes("youtube.com"), false);
-  assert.match(level1, /https:\/\/www\.youtube-nocookie\.com\/embed\/VIDEO_ID/);
+  assert.match(visibleLevel1, /<h2>Watch Episode 1<\/h2>/);
+  assert.equal(level1.includes("VIDEO_ID"), false);
+  assert.equal(level1.includes("PLACEHOLDER"), false);
+  assert.match(visibleLevel1, /https:\/\/www\.youtube-nocookie\.com\/embed\/oi_BCUrdGhc/);
   assert.equal(level1.includes("autoplay"), false);
-  assert.match(level1, /Watch Episode 1/);
-  assert.match(level1, /A free 2-minute walkthrough of opening MakeCode Arcade and starting a new project\./);
-  assert.match(level1, /A grown-up should stay nearby\./);
-  assert.match(level1, /https:\/\/www\.youtube\.com\/watch\?v=VIDEO_ID/);
+  assert.match(visibleLevel1, /A free 2-minute walkthrough of opening MakeCode Arcade and starting a new project\./);
+  assert.match(visibleLevel1, /A grown-up should stay nearby\./);
+  assert.match(visibleLevel1, /https:\/\/www\.youtube\.com\/watch\?v=oi_BCUrdGhc/);
+  assert.match(visibleLevel1, /class="episode no-print"/);
 });
 
-test("youtube channel link stays inside an html comment", () => {
+test("youtube channel link is visible beside X and Facebook", () => {
   const pages = [];
   const walk = (dir) => {
     for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -407,14 +407,14 @@ test("youtube channel link stays inside an html comment", () => {
     const html = readFileSync(path, "utf8");
     if (!html.includes('aria-label="Social"')) continue;
     footers += 1;
-    assert.match(html, /<!--[^]*https:\/\/www\.youtube\.com\/@levelupmakers[^]*-->/, path);
+    assert.equal(html.includes("Hidden until the YouTube channel is live"), false, path);
     const visible = html.replace(/<!--[^]*?-->/g, "");
     const footer = visible.split("<footer>")[1] || "";
-    assert.equal(footer.includes("youtube.com"), false, path);
+    assert.match(footer, /<a href="https:\/\/www\.youtube\.com\/@levelupmakers" rel="noopener">YouTube<\/a>/, path);
     assert.match(footer, /https:\/\/x\.com\/levelupmakers/, path);
     assert.match(footer, /<a href="https:\/\/www\.facebook\.com\/levelupmakers\/" rel="noopener">Facebook<\/a>/, path);
   }
   assert.ok(footers >= 20);
   const home = readFileSync("index.html", "utf8");
-  assert.match(home, /"https:\/\/x\.com\/levelupmakers",\s*"https:\/\/www\.facebook\.com\/levelupmakers\/"/);
+  assert.match(home, /"https:\/\/x\.com\/levelupmakers",\s*"https:\/\/www\.facebook\.com\/levelupmakers\/",\s*"https:\/\/www\.youtube\.com\/@levelupmakers"/);
 });
